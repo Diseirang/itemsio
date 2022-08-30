@@ -84,7 +84,8 @@ class _UpdateItemsINRecordState extends State<UpdateItemsINRecord> {
                   keyboardType: TextInputType.text,
                   decoration: InputDecoration(
                     border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10)),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
                     labelText: 'Name',
                     hintText: 'Enter Your Name',
                   ),
@@ -254,7 +255,7 @@ class _UpdateItemsINRecordState extends State<UpdateItemsINRecord> {
                         ],
                         border: Border.all(color: Colors.white, width: 4),
                         color: const Color(0xFF29648C),
-                        borderRadius: BorderRadius.circular(12),
+                        borderRadius: BorderRadius.circular(50),
                       ),
                       child: Center(
                         child: Row(

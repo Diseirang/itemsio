@@ -1,7 +1,7 @@
 // ignore_for_file: sort_child_properties_last
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:items_io/drawer_page/about_page.dart';
+import 'package:items_io/drawer_page/about_developer.dart';
 import '../pages/member_report.dart';
 import 'profile_page.dart';
 

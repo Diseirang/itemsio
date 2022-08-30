@@ -8,7 +8,7 @@ class AboutPage extends StatelessWidget {
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
           title: Text(
-            'About system'.toUpperCase(),
+            'About Developer'.toUpperCase(),
             style:
                 GoogleFonts.aclonica(fontWeight: FontWeight.bold, fontSize: 25),
           ),

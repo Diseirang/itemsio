@@ -254,7 +254,7 @@ class _UpdateItemsOutRecordState extends State<UpdateItemsOutRecord> {
                         ],
                         border: Border.all(color: Colors.white, width: 4),
                         color: const Color(0xFF29648C),
-                        borderRadius: BorderRadius.circular(12),
+                        borderRadius: BorderRadius.circular(50),
                       ),
                       child: Center(
                         child: Row(

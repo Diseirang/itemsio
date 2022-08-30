@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:items_io/pages/about_system.dart';
 import '../InOutPage/items_in_page.dart';
 import '../InOutPage/items_out_page.dart';
 import '../InOutReport/items_in_report.dart';
@@ -67,20 +68,32 @@ class _HomePageState extends State<HomePage> {
                         ],
                         borderRadius: BorderRadius.circular(15),
                       ),
-                      child: Container(
-                        height: 130,
-                        width: 130,
-                        decoration: BoxDecoration(
-                          image: const DecorationImage(
-                            image: AssetImage('assets/images/logo.jpg'),
-                            fit: BoxFit.fill,
+                      child: GestureDetector(
+                        onDoubleTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) {
+                                return const AboutSystem();
+                              },
+                            ),
+                          );
+                        },
+                        child: Container(
+                          height: 130,
+                          width: 130,
+                          decoration: BoxDecoration(
+                            image: const DecorationImage(
+                              image: AssetImage('assets/images/logo.jpg'),
+                              fit: BoxFit.fill,
+                            ),
+                            borderRadius: BorderRadius.circular(15),
+                            boxShadow: const [
+                              BoxShadow(
+                                  //color: Color.fromARGB(255, 45, 231, 255),
+                                  ),
+                            ],
                           ),
-                          borderRadius: BorderRadius.circular(15),
-                          boxShadow: const [
-                            BoxShadow(
-                                //color: Color.fromARGB(255, 45, 231, 255),
-                                ),
-                          ],
                         ),
                       ),
                     ),

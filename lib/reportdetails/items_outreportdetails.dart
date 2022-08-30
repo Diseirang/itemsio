@@ -73,16 +73,13 @@ class _itemsOUTReportDetailsState extends State<itemsOUTReportDetails> {
                     fontWeight: FontWeight.bold,
                     color: Colors.grey),
               ),
-              const SizedBox(
-                height: 5.0,
-              ),
               TextField(
                 decoration: const InputDecoration(border: InputBorder.none),
                 readOnly: true,
                 controller: staffNameController,
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
-                  fontSize: 24.0,
+                  fontSize: 20.0,
                   letterSpacing: 2.0,
                   color: Colors.amberAccent[200],
                 ),
@@ -97,16 +94,13 @@ class _itemsOUTReportDetailsState extends State<itemsOUTReportDetails> {
                     fontWeight: FontWeight.bold,
                     color: Colors.grey),
               ),
-              const SizedBox(
-                height: 5.0,
-              ),
               TextField(
                 decoration: const InputDecoration(border: InputBorder.none),
                 readOnly: true,
                 controller: idController,
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
-                  fontSize: 24.0,
+                  fontSize: 20.0,
                   letterSpacing: 2.0,
                   color: Colors.amberAccent[200],
                 ),
@@ -121,16 +115,13 @@ class _itemsOUTReportDetailsState extends State<itemsOUTReportDetails> {
                     fontWeight: FontWeight.bold,
                     color: Colors.grey),
               ),
-              const SizedBox(
-                height: 5.0,
-              ),
               TextField(
                 decoration: const InputDecoration(border: InputBorder.none),
                 readOnly: true,
                 controller: positionController,
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
-                  fontSize: 24.0,
+                  fontSize: 20.0,
                   letterSpacing: 2.0,
                   color: Colors.amberAccent[200],
                 ),
@@ -145,16 +136,13 @@ class _itemsOUTReportDetailsState extends State<itemsOUTReportDetails> {
                     fontWeight: FontWeight.bold,
                     color: Colors.grey),
               ),
-              const SizedBox(
-                height: 5.0,
-              ),
               TextField(
                 decoration: const InputDecoration(border: InputBorder.none),
                 readOnly: true,
                 controller: itemDescController,
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
-                  fontSize: 24.0,
+                  fontSize: 20.0,
                   letterSpacing: 2.0,
                   color: Colors.amberAccent[200],
                 ),
@@ -169,16 +157,13 @@ class _itemsOUTReportDetailsState extends State<itemsOUTReportDetails> {
                     fontWeight: FontWeight.bold,
                     color: Colors.grey),
               ),
-              const SizedBox(
-                height: 5.0,
-              ),
               TextField(
                 decoration: const InputDecoration(border: InputBorder.none),
                 readOnly: true,
                 controller: qtyController,
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
-                  fontSize: 24.0,
+                  fontSize: 20.0,
                   letterSpacing: 2.0,
                   color: Colors.amberAccent[200],
                 ),
@@ -193,16 +178,13 @@ class _itemsOUTReportDetailsState extends State<itemsOUTReportDetails> {
                     fontWeight: FontWeight.bold,
                     color: Colors.grey),
               ),
-              const SizedBox(
-                height: 5.0,
-              ),
               TextField(
                 decoration: const InputDecoration(border: InputBorder.none),
                 readOnly: true,
                 controller: purposeController,
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
-                  fontSize: 24.0,
+                  fontSize: 20.0,
                   letterSpacing: 2.0,
                   color: Colors.amberAccent[200],
                 ),
@@ -217,16 +199,13 @@ class _itemsOUTReportDetailsState extends State<itemsOUTReportDetails> {
                     fontWeight: FontWeight.bold,
                     color: Colors.grey),
               ),
-              const SizedBox(
-                height: 5.0,
-              ),
               TextField(
                 decoration: const InputDecoration(border: InputBorder.none),
                 readOnly: true,
                 controller: campusController,
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
-                  fontSize: 24.0,
+                  fontSize: 20.0,
                   letterSpacing: 2.0,
                   color: Colors.amberAccent[200],
                 ),
@@ -241,16 +220,13 @@ class _itemsOUTReportDetailsState extends State<itemsOUTReportDetails> {
                     fontWeight: FontWeight.bold,
                     color: Colors.grey[400]),
               ),
-              const SizedBox(
-                height: 5.0,
-              ),
               TextField(
                 decoration: const InputDecoration(border: InputBorder.none),
                 readOnly: true,
                 controller: dateController,
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
-                  fontSize: 24.0,
+                  fontSize: 20.0,
                   letterSpacing: 2.0,
                   color: Colors.amberAccent[200],
                 ),
