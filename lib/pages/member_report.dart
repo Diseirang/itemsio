@@ -114,7 +114,7 @@ class _ReportMemberState extends State<ReportMember> {
         backgroundColor: const Color(0xFF29648C),
       ),
       body: Container(
-        color: Color.fromARGB(255, 24, 113, 172),
+        color: const Color.fromARGB(255, 24, 113, 172),
         child: SizedBox(
           height: double.infinity,
           child: FirebaseAnimatedList(
