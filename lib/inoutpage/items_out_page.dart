@@ -160,7 +160,7 @@ class _ItemsOutPageState extends State<ItemsOutPage> {
                               decoration: BoxDecoration(
                                 color: Colors.grey[100],
                                 border: Border.all(color: Colors.white),
-                                borderRadius: BorderRadius.circular(12),
+                                borderRadius: BorderRadius.circular(5),
                               ),
                               child: Padding(
                                 padding: const EdgeInsets.only(left: 20),
@@ -200,7 +200,7 @@ class _ItemsOutPageState extends State<ItemsOutPage> {
                               decoration: BoxDecoration(
                                 color: Colors.grey[100],
                                 border: Border.all(color: Colors.white),
-                                borderRadius: BorderRadius.circular(12),
+                                borderRadius: BorderRadius.circular(5),
                               ),
                               child: Padding(
                                 padding: const EdgeInsets.only(left: 20),
@@ -240,7 +240,7 @@ class _ItemsOutPageState extends State<ItemsOutPage> {
                               decoration: BoxDecoration(
                                 color: Colors.grey[100],
                                 border: Border.all(color: Colors.white),
-                                borderRadius: BorderRadius.circular(12),
+                                borderRadius: BorderRadius.circular(5),
                               ),
                               child: Padding(
                                 padding: const EdgeInsets.only(left: 20),
@@ -280,7 +280,7 @@ class _ItemsOutPageState extends State<ItemsOutPage> {
                               decoration: BoxDecoration(
                                 color: Colors.grey[100],
                                 border: Border.all(color: Colors.white),
-                                borderRadius: BorderRadius.circular(12),
+                                borderRadius: BorderRadius.circular(5),
                               ),
                               child: Padding(
                                 padding: const EdgeInsets.only(left: 20),
@@ -320,7 +320,7 @@ class _ItemsOutPageState extends State<ItemsOutPage> {
                               decoration: BoxDecoration(
                                 color: Colors.grey[100],
                                 border: Border.all(color: Colors.white),
-                                borderRadius: BorderRadius.circular(12),
+                                borderRadius: BorderRadius.circular(5),
                               ),
                               child: Padding(
                                 padding: const EdgeInsets.only(left: 20),
@@ -360,7 +360,7 @@ class _ItemsOutPageState extends State<ItemsOutPage> {
                               decoration: BoxDecoration(
                                 color: Colors.grey[100],
                                 border: Border.all(color: Colors.white),
-                                borderRadius: BorderRadius.circular(12),
+                                borderRadius: BorderRadius.circular(5),
                               ),
                               child: Padding(
                                 padding: const EdgeInsets.only(left: 20),
@@ -400,7 +400,7 @@ class _ItemsOutPageState extends State<ItemsOutPage> {
                               decoration: BoxDecoration(
                                 color: Colors.grey[100],
                                 border: Border.all(color: Colors.white),
-                                borderRadius: BorderRadius.circular(12),
+                                borderRadius: BorderRadius.circular(5),
                               ),
                               child: Padding(
                                 padding: const EdgeInsets.only(left: 20),
@@ -440,7 +440,7 @@ class _ItemsOutPageState extends State<ItemsOutPage> {
                               decoration: BoxDecoration(
                                 color: Colors.grey[100],
                                 border: Border.all(color: Colors.white),
-                                borderRadius: BorderRadius.circular(12),
+                                borderRadius: BorderRadius.circular(5),
                               ),
                               child: Padding(
                                 padding: const EdgeInsets.only(left: 20),
@@ -503,7 +503,7 @@ class _ItemsOutPageState extends State<ItemsOutPage> {
                               decoration: BoxDecoration(
                                 color: Colors.grey[100],
                                 border: Border.all(color: Colors.white),
-                                borderRadius: BorderRadius.circular(12),
+                                borderRadius: BorderRadius.circular(5),
                               ),
                               child: Padding(
                                 padding: const EdgeInsets.only(left: 20),
@@ -537,7 +537,7 @@ class _ItemsOutPageState extends State<ItemsOutPage> {
                             ],
                             border: Border.all(color: Colors.white, width: 4),
                             color: const Color(0xFF29648C),
-                            borderRadius: BorderRadius.circular(12),
+                            borderRadius: BorderRadius.circular(50),
                           ),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,

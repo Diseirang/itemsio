@@ -7,7 +7,6 @@ import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
-import 'package:firebase_storage/firebase_storage.dart' as fStorage;
 
 class ItemsInPage extends StatefulWidget {
   const ItemsInPage({super.key});
@@ -15,12 +14,6 @@ class ItemsInPage extends StatefulWidget {
   @override
   State<ItemsInPage> createState() => _ItemsInPageState();
 }
-
-File? image;
-String filename = DateTime.now().millisecondsSinceEpoch.toString();
-//Upload image to firestore
-fStorage.Reference storageRef =
-    fStorage.FirebaseStorage.instance.ref().child('ItemsINPic').child(filename);
 
 class _ItemsInPageState extends State<ItemsInPage> {
   final takerNameController = TextEditingController();
@@ -37,7 +30,7 @@ class _ItemsInPageState extends State<ItemsInPage> {
   // ignore: deprecated_member_use
   final databaseReference = FirebaseDatabase.instance.reference();
 
-  //////////////
+  File? image;
 
   // Get current user email
   final user = FirebaseAuth.instance.currentUser!;
@@ -88,9 +81,6 @@ class _ItemsInPageState extends State<ItemsInPage> {
     );
   }
 
-  fStorage.UploadTask uploadImageTask = storageRef.putFile(File(image!.path));
-
-  //fStorage.TaskSnapshot taskSnapshot = await uploadImageTask.whenComplete(() {});
   // Insert Data to Items OUT Realtime database
   void insertItemsINRealtime(
       String takerName,
@@ -175,7 +165,7 @@ class _ItemsInPageState extends State<ItemsInPage> {
       if (image == null) return;
 
       final imageTempory = File(image.path);
-      setState(() => this.newImage = imageTempory);
+      setState(() => this.image = imageTempory);
     } on PlatformException {
       showDialog(
         context: context,
@@ -193,14 +183,13 @@ class _ItemsInPageState extends State<ItemsInPage> {
     }
   }
 
-  File? newImage;
   Future pickImage() async {
     try {
       final image = await ImagePicker().pickImage(source: ImageSource.gallery);
       if (image == null) return;
 
       final imageTempory = File(image.path);
-      setState(() => this.newImage = imageTempory);
+      setState(() => this.image = imageTempory);
     } on PlatformException {
       showDialog(
         context: context,
@@ -281,7 +270,7 @@ class _ItemsInPageState extends State<ItemsInPage> {
                       Container(
                         decoration: BoxDecoration(
                           color: Colors.white,
-                          borderRadius: BorderRadius.circular(10),
+                          borderRadius: BorderRadius.circular(5),
                           boxShadow: const [
                             BoxShadow(
                               color: Color.fromARGB(255, 45, 231, 255),
@@ -322,7 +311,7 @@ class _ItemsInPageState extends State<ItemsInPage> {
                       Container(
                         decoration: BoxDecoration(
                           color: Colors.white,
-                          borderRadius: BorderRadius.circular(10),
+                          borderRadius: BorderRadius.circular(5),
                           boxShadow: const [
                             BoxShadow(
                               color: Color.fromARGB(255, 45, 231, 255),
@@ -363,7 +352,7 @@ class _ItemsInPageState extends State<ItemsInPage> {
                       Container(
                         decoration: BoxDecoration(
                           color: Colors.white,
-                          borderRadius: BorderRadius.circular(10),
+                          borderRadius: BorderRadius.circular(5),
                           boxShadow: const [
                             BoxShadow(
                               color: Color.fromARGB(255, 45, 231, 255),
@@ -404,7 +393,7 @@ class _ItemsInPageState extends State<ItemsInPage> {
                       Container(
                         decoration: BoxDecoration(
                           color: Colors.white,
-                          borderRadius: BorderRadius.circular(10),
+                          borderRadius: BorderRadius.circular(5),
                           boxShadow: const [
                             BoxShadow(
                               color: Color.fromARGB(255, 45, 231, 255),
@@ -445,7 +434,7 @@ class _ItemsInPageState extends State<ItemsInPage> {
                       Container(
                         decoration: BoxDecoration(
                           color: Colors.white,
-                          borderRadius: BorderRadius.circular(10),
+                          borderRadius: BorderRadius.circular(5),
                           boxShadow: const [
                             BoxShadow(
                               color: Color.fromARGB(255, 45, 231, 255),
@@ -486,7 +475,7 @@ class _ItemsInPageState extends State<ItemsInPage> {
                       Container(
                         decoration: BoxDecoration(
                           color: Colors.white,
-                          borderRadius: BorderRadius.circular(10),
+                          borderRadius: BorderRadius.circular(5),
                           boxShadow: const [
                             BoxShadow(
                               color: Color.fromARGB(255, 45, 231, 255),
@@ -527,7 +516,7 @@ class _ItemsInPageState extends State<ItemsInPage> {
                       Container(
                         decoration: BoxDecoration(
                           color: Colors.white,
-                          borderRadius: BorderRadius.circular(10),
+                          borderRadius: BorderRadius.circular(5),
                           boxShadow: const [
                             BoxShadow(
                               color: Color.fromARGB(255, 45, 231, 255),
@@ -568,7 +557,7 @@ class _ItemsInPageState extends State<ItemsInPage> {
                       Container(
                         decoration: BoxDecoration(
                           color: Colors.white,
-                          borderRadius: BorderRadius.circular(10),
+                          borderRadius: BorderRadius.circular(5),
                           boxShadow: const [
                             BoxShadow(
                               color: Color.fromARGB(255, 45, 231, 255),
@@ -652,7 +641,7 @@ class _ItemsInPageState extends State<ItemsInPage> {
                       Container(
                         decoration: BoxDecoration(
                           color: Colors.white,
-                          borderRadius: BorderRadius.circular(10),
+                          borderRadius: BorderRadius.circular(5),
                           boxShadow: const [
                             BoxShadow(
                               color: Color.fromARGB(255, 45, 231, 255),
@@ -748,7 +737,7 @@ class _ItemsInPageState extends State<ItemsInPage> {
                             ],
                             border: Border.all(color: Colors.white, width: 4),
                             color: const Color(0xFF29648C),
-                            borderRadius: BorderRadius.circular(12),
+                            borderRadius: BorderRadius.circular(50),
                           ),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
