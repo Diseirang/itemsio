@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "595567641134",
+    "project_id": "mjqeitemsinout-73326",
+    "storage_bucket": "mjqeitemsinout-73326.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:595567641134:android:f59bcc6d8c9427473a95bf",
+        "android_client_info": {
+          "package_name": "mjqeducation.edu.kh.items_io"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "595567641134-vlie2rb9s4vkolh082nm0nmrr3qn8i0p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC9Ma8gwAZk-rP7utGKvehm_qeiHkdLqLU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "595567641134-vlie2rb9s4vkolh082nm0nmrr3qn8i0p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
