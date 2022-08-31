@@ -4,8 +4,8 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../reportdetails/items_inreportdetails.dart';
-import '../updatepage/items_in_update.dart';
+import '../ReportDetails/items_inreportdetails.dart';
+import '../UpdatePage/items_in_update.dart';
 
 class ItemsInReport extends StatefulWidget {
   const ItemsInReport({Key? key}) : super(key: key);

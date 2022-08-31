@@ -4,8 +4,8 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../reportdetails/items_outreportdetails.dart';
-import '../updatepage/items_out_update.dart';
+import '../ReportDetails/items_outreportdetails.dart';
+import '../UpdatePage/items_out_update.dart';
 
 class ItemsOutReport extends StatefulWidget {
   const ItemsOutReport({Key? key}) : super(key: key);

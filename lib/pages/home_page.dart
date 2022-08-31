@@ -1,12 +1,12 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:items_io/pages/about_system.dart';
+import 'package:items_io/Pages/about_system.dart';
 import '../InOutPage/items_in_page.dart';
 import '../InOutPage/items_out_page.dart';
 import '../InOutReport/items_in_report.dart';
 import '../InOutReport/items_out_report.dart';
-import '../drawer_page/my_drawer.dart';
+import '../DrawerPage/my_drawer.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
