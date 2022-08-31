@@ -32,7 +32,7 @@ class _ReportMemberState extends State<ReportMember> {
       ),
       child: Container(
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(5),
           color: const Color(0xFF29648C),
         ),
         margin: const EdgeInsets.fromLTRB(10, 10, 10, 5),
@@ -113,19 +113,24 @@ class _ReportMemberState extends State<ReportMember> {
         centerTitle: true,
         backgroundColor: const Color(0xFF29648C),
       ),
-      body: Container(
-        color: const Color.fromARGB(255, 24, 113, 172),
-        child: SizedBox(
-          height: double.infinity,
-          child: FirebaseAnimatedList(
-            query: dbRef,
-            itemBuilder: (BuildContext context, DataSnapshot snapshot,
-                Animation<double> animation, int index) {
-              Map itemsin = snapshot.value as Map;
-              itemsin['key'] = snapshot.key;
+      body: Scrollbar(
+        thickness: 10,
+        thumbVisibility: true,
+        radius: const Radius.circular(10),
+        child: Container(
+          color: const Color.fromARGB(255, 24, 113, 172),
+          child: SizedBox(
+            height: double.infinity,
+            child: FirebaseAnimatedList(
+              query: dbRef,
+              itemBuilder: (BuildContext context, DataSnapshot snapshot,
+                  Animation<double> animation, int index) {
+                Map itemsin = snapshot.value as Map;
+                itemsin['key'] = snapshot.key;
 
-              return listUser(userInfo: itemsin);
-            },
+                return listUser(userInfo: itemsin);
+              },
+            ),
           ),
         ),
       ),

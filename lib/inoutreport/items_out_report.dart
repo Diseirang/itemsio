@@ -24,75 +24,55 @@ class _ItemsOutReportState extends State<ItemsOutReport> {
   DatabaseReference reference =
       FirebaseDatabase.instance.ref().child('ItemsOUT');
   Widget listItem({required Map itemsin}) {
-    return GestureDetector(
-      onDoubleTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (_) => itemsOUTReportDetails(
-              itemsOUTDetailKey: itemsin['key'],
-            ),
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+        boxShadow: const [
+          BoxShadow(
+            color: Colors.green,
+            blurRadius: 10.0,
+            offset: Offset(10, 10),
           ),
-        );
-      },
-      child: Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
-          boxShadow: const [
-            BoxShadow(
-              color: Colors.green,
-              blurRadius: 10.0,
-              offset: Offset(10, 10),
+        ],
+      ),
+      child: GestureDetector(
+        onDoubleTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (_) => itemsOUTReportDetails(
+                itemsOUTDetailKey: itemsin['key'],
+              ),
             ),
-          ],
-        ),
+          );
+        },
         child: Container(
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: BorderRadius.circular(5),
             color: Colors.green[900],
           ),
           margin: const EdgeInsets.fromLTRB(10, 10, 10, 5),
           padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
           //color: Colors.white,
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Name : ' + itemsin['StaffName'],
-                        style: const TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 5.0,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        'ID : ' + itemsin['ID'],
-                        style: const TextStyle(
-                            //fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white),
-                      ),
-                      // Text(
-                      //   'Position : ' + itemsin['Position'],
-                      //   style: const TextStyle(
-                      //       //fontSize: 18,
-                      //       fontWeight: FontWeight.bold,
-                      //       color: Colors.white),
-                      // ),
-                    ],
-                  ),
-                ],
+              Text(
+                'Name : ' + itemsin['StaffName'],
+                style: const TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white),
+              ),
+              const SizedBox(
+                height: 5.0,
+              ),
+              Text(
+                'ID : ' + itemsin['ID'],
+                style: const TextStyle(
+                    //fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white),
               ),
               const SizedBox(
                 height: 5,
@@ -105,18 +85,14 @@ class _ItemsOutReportState extends State<ItemsOutReport> {
               const SizedBox(
                 height: 5,
               ),
-              Row(
-                children: [
-                  SingleChildScrollView(
-                    child: Text(
-                      'Item Desc : ' + itemsin['ItemsDesc'],
-                      style: const TextStyle(
-                          //fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white),
-                    ),
-                  ),
-                ],
+              Text(
+                'Item Desc : ' + itemsin['ItemsDesc'],
+                textDirection: TextDirection.ltr,
+                maxLines: 2,
+                style: const TextStyle(
+                    //fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white),
               ),
 
               Row(
@@ -236,19 +212,24 @@ class _ItemsOutReportState extends State<ItemsOutReport> {
               GoogleFonts.aclonica(fontWeight: FontWeight.bold, fontSize: 25),
         ),
       ),
-      body: Container(
-        color: Colors.green[200],
-        child: SizedBox(
-          height: double.infinity,
-          child: FirebaseAnimatedList(
-            query: reference.orderByChild("TimeAdded"),
-            itemBuilder: (BuildContext context, DataSnapshot snapshot,
-                Animation<double> animation, int index) {
-              Map itemsin = snapshot.value as Map;
-              itemsin['key'] = snapshot.key;
+      body: Scrollbar(
+        thickness: 10,
+        thumbVisibility: true,
+        radius: const Radius.circular(10),
+        child: Container(
+          color: Colors.green[200],
+          child: SizedBox(
+            height: double.infinity,
+            child: FirebaseAnimatedList(
+              query: reference.orderByChild("TimeAdded"),
+              itemBuilder: (BuildContext context, DataSnapshot snapshot,
+                  Animation<double> animation, int index) {
+                Map itemsin = snapshot.value as Map;
+                itemsin['key'] = snapshot.key;
 
-              return listItem(itemsin: itemsin);
-            },
+                return listItem(itemsin: itemsin);
+              },
+            ),
           ),
         ),
       ),

@@ -37,7 +37,7 @@ class _DrawerState extends State<MyDrawer> {
                   const SizedBox(
                     height: 12.0,
                   ),
-                  const Text('Diseirang CHHEUN',
+                  const Text('Current User',
                       style: TextStyle(
                           color: Colors.white,
                           fontSize: 20,
