@@ -3,7 +3,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
- 
 
 class ForgotPasswordPage extends StatefulWidget {
   const ForgotPasswordPage({super.key});
@@ -25,25 +24,40 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
   Future passwordReset() async {
     try {
       if (_emailControl.text.isNotEmpty) {
-        await FirebaseAuth.instance
-            .sendPasswordResetEmail(email: _emailControl.text.trim());
+        try {
+          await FirebaseAuth.instance
+              .sendPasswordResetEmail(email: _emailControl.text.trim());
 
-        showDialog(
-          context: context,
-          builder: (context) {
-            return const AlertDialog(
-              backgroundColor: Color.fromARGB(255, 41, 100, 140),
-              title: Text(
-                'Alert!',
-                style: TextStyle(color: Colors.white),
-              ),
-              content: Text(
-                'Password reset link sent! Check your email.',
-                style: TextStyle(color: Colors.white),
-              ),
-            );
-          },
-        );
+          showDialog(
+            context: context,
+            builder: (context) {
+              return const AlertDialog(
+                backgroundColor: Color.fromARGB(255, 41, 100, 140),
+                title: Text(
+                  'Alert!',
+                  style: TextStyle(color: Colors.white),
+                ),
+                content: Text(
+                  'Password reset link sent! Check your email.',
+                  style: TextStyle(color: Colors.white),
+                ),
+              );
+            },
+          );
+          Navigator.of(context).pop(true);
+        } on FirebaseAuthException catch (e) {
+          showDialog(
+            context: context,
+            builder: (context) {
+              return AlertDialog(
+                content: Text(
+                  e.message.toString(),
+                  style: const TextStyle(color: Colors.white),
+                ),
+              );
+            },
+          );
+        }
         _emailControl.clear();
       } else {
         showDialog(
@@ -222,6 +236,9 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                               Icons.restore_outlined,
                               size: 25,
                               color: Colors.white,
+                            ),
+                            SizedBox(
+                              width: 10,
                             ),
                             Text(
                               'Reset Password',

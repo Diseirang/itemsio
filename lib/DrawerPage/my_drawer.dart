@@ -38,6 +38,8 @@ class _DrawerState extends State<MyDrawer> {
                     height: 12.0,
                   ),
                   const Text('Current User',
+                      maxLines: 2,
+                      textDirection: TextDirection.ltr,
                       style: TextStyle(
                           color: Colors.white,
                           fontSize: 20,
@@ -64,13 +66,13 @@ class _DrawerState extends State<MyDrawer> {
                     icon: Icons.home,
                     onClicked: () => selectedItem(context, 0),
                   ),
+                  // buildMenuItem(
+                  //   text: 'Profile',
+                  //   icon: Icons.person,
+                  //   onClicked: () => selectedItem(context, 1),
+                  // ),
                   buildMenuItem(
-                    text: 'Profile',
-                    icon: Icons.person,
-                    onClicked: () => selectedItem(context, 1),
-                  ),
-                  buildMenuItem(
-                    text: 'Members',
+                    text: 'Members Report',
                     icon: Icons.people,
                     onClicked: () => selectedItem(context, 2),
                   ),

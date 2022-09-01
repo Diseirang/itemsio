@@ -15,6 +15,7 @@ class RegisterPage extends StatefulWidget {
 
 class _RegisterPageState extends State<RegisterPage> {
   bool _isHiddenPassword = true;
+  bool _isHiddenConfirmPassword = true;
   // Text controller
   final _idCardControl = TextEditingController();
   final _emailControl = TextEditingController();
@@ -476,7 +477,7 @@ class _RegisterPageState extends State<RegisterPage> {
                           keyboardType: TextInputType.text,
                           decoration: InputDecoration(
                             icon: const Icon(
-                              Icons.lock,
+                              Icons.key,
                               color: Color.fromARGB(255, 41, 100, 140),
                             ),
                             border: InputBorder.none,
@@ -528,10 +529,10 @@ class _RegisterPageState extends State<RegisterPage> {
                         padding: const EdgeInsets.only(left: 15, right: 5),
                         child: TextField(
                           controller: _confirmPasswordControl,
-                          obscureText: _isHiddenPassword,
+                          obscureText: _isHiddenConfirmPassword,
                           decoration: InputDecoration(
                             icon: const Icon(
-                              Icons.lock,
+                              Icons.key,
                               color: Color.fromARGB(255, 41, 100, 140),
                             ),
                             border: InputBorder.none,
@@ -542,7 +543,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             suffixIcon: IconButton(
                               splashRadius: 0.1,
                               icon: Icon(
-                                _isHiddenPassword
+                                _isHiddenConfirmPassword
                                     ? Icons.visibility
                                     : Icons.visibility_off,
                                 color: const Color.fromARGB(255, 41, 100, 140),
@@ -550,7 +551,8 @@ class _RegisterPageState extends State<RegisterPage> {
                               onPressed: () {
                                 setState(
                                   () {
-                                    _isHiddenPassword = !_isHiddenPassword;
+                                    _isHiddenConfirmPassword =
+                                        !_isHiddenConfirmPassword;
                                   },
                                 );
                               },
