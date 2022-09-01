@@ -2,7 +2,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:email_validator/email_validator.dart';
 
 class RegisterPage extends StatefulWidget {
   final VoidCallback showLoginPage;
@@ -14,6 +16,7 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
+  String _errorMessage = '';
   bool _isHiddenPassword = true;
   bool _isHiddenConfirmPassword = true;
   // Text controller
@@ -21,9 +24,10 @@ class _RegisterPageState extends State<RegisterPage> {
   final _emailControl = TextEditingController();
   final _passwordControl = TextEditingController();
   final _confirmPasswordControl = TextEditingController();
-  final _firstNameControl = TextEditingController();
-  final _lastNameControl = TextEditingController();
-  final _ageControl = TextEditingController();
+  final _userNameControl = TextEditingController();
+  final _positionController = TextEditingController();
+
+  // final _ageControl = TextEditingController();
 
   FirebaseAuth auth = FirebaseAuth.instance;
   // ignore: deprecated_member_use
@@ -34,16 +38,16 @@ class _RegisterPageState extends State<RegisterPage> {
     _emailControl.dispose();
     _passwordControl.dispose();
     _confirmPasswordControl.dispose();
-    _firstNameControl.dispose();
-    _lastNameControl.dispose();
-    _ageControl.dispose();
+    _userNameControl.dispose();
+    _positionController.dispose();
+    //  _ageControl.dispose();
     super.dispose();
   }
 
   Future signUp() async {
-    if (_firstNameControl.text.isNotEmpty &&
-        _lastNameControl.text.isNotEmpty &&
-        _ageControl.text.isNotEmpty &&
+    if (_userNameControl.text.isNotEmpty &&
+        _positionController.text.isNotEmpty &&
+        //  _ageControl.text.isNotEmpty &&
         _idCardControl.text.isNotEmpty &&
         _emailControl.text.isNotEmpty &&
         _passwordControl.text.isNotEmpty) {
@@ -55,21 +59,22 @@ class _RegisterPageState extends State<RegisterPage> {
           password: _passwordControl.text.trim(),
         );
         // add user details
-        addUserDetails(
-          _firstNameControl.text.trim(),
-          _lastNameControl.text.trim(),
+        addUserDetailsStorage(
+          _userNameControl.text.trim(),
           _idCardControl.text.trim(),
+          _positionController.text.trim(),
           _emailControl.text.trim(),
-          int.parse(_ageControl.text.trim()),
+          // int.parse(_ageControl.text.trim(),
         );
 
         // insert database
         insertDataRealtime(
-          _firstNameControl.text.trim(),
-          _lastNameControl.text.trim(),
+          _userNameControl.text.trim(),
           _idCardControl.text.trim(),
+          _positionController.text.trim(),
           _emailControl.text.trim(),
-          int.parse(_ageControl.text.trim()),
+
+          // int.parse(_ageControl.text.trim(),
         );
         //}
       } on FirebaseAuthException catch (e) {
@@ -144,30 +149,31 @@ class _RegisterPageState extends State<RegisterPage> {
 
 // insert data to Realtime Database
   void insertDataRealtime(
-      String firstName, String lastName, String idCard, String email, int age) {
+      String usertName, String idCard, String position, String email) {
     //String? key = databaseReference.child("UserInfo").push().key;
     databaseReference.child("UserInfo").push().set(
       {
         //'Nº': key,
-        'firstName': firstName,
-        'lastName': lastName,
+        'userName': usertName,
         'idCard': idCard,
+        'position': position,
         'email': email,
-        'age': age,
+        // 'age': age,
       },
     );
   }
 
   // Add data to firestore Database
-  Future addUserDetails(String firstName, String lastName, String idCard,
-      String email, int age) async {
+  Future addUserDetailsStorage(
+      String usertName, String idCard, String position, String email) async {
     await FirebaseFirestore.instance.collection('UserInfo').doc(idCard).set(
       {
-        'firstName': firstName,
-        'lastName': lastName,
+        'usertName': usertName,
         'idCard': idCard,
+        'position': position,
         'email': email,
-        'age': age,
+
+        // 'age': age,
       },
     );
   }
@@ -281,7 +287,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       child: Padding(
                         padding: const EdgeInsets.only(left: 15, right: 5),
                         child: TextField(
-                          controller: _firstNameControl,
+                          controller: _userNameControl,
                           keyboardType: TextInputType.text,
                           decoration: const InputDecoration(
                             icon: Icon(
@@ -372,42 +378,88 @@ class _RegisterPageState extends State<RegisterPage> {
                   //   ),
                   // ),
 
-                  // const SizedBox(
-                  //   height: 10,
-                  // ),
+                  const SizedBox(
+                    height: 10,
+                  ),
 
-                  // // Age TextField
-                  // Padding(
-                  //   padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                  //   child: Container(
-                  //     decoration: BoxDecoration(
-                  //       boxShadow: const [
-                  //         BoxShadow(
-                  //           color: Color.fromARGB(255, 45, 231, 255),
-                  //           blurRadius: 20.0,
-                  //           offset: Offset(0, 10),
-                  //         ),
-                  //       ],
-                  //       color: Colors.grey[100],
-                  //       border: Border.all(color: Colors.white),
-                  //       borderRadius: BorderRadius.circular(5),
-                  //     ),
-                  //     child: Padding(
-                  //       padding: const EdgeInsets.only(left: 20, right: 5),
-                  //       child: TextField(
-                  //         controller: _idCardControl,
-                  //         keyboardType: TextInputType.text,
-                  //         decoration: const InputDecoration(
-                  //           border: InputBorder.none,
-                  //           hintText: 'ID Card',
-                  //           hintStyle: TextStyle(
-                  //             color: Color.fromARGB(255, 41, 100, 140),
-                  //           ),
-                  //         ),
-                  //       ),
-                  //     ),
-                  //   ),
-                  // ),
+                  // // ID TextField
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        boxShadow: const [
+                          BoxShadow(
+                            color: Color.fromARGB(255, 45, 231, 255),
+                            blurRadius: 20.0,
+                            offset: Offset(0, 10),
+                          ),
+                        ],
+                        color: Colors.grey[100],
+                        border: Border.all(color: Colors.white),
+                        borderRadius: BorderRadius.circular(5),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 18, right: 5),
+                        child: TextField(
+                          controller: _idCardControl,
+                          keyboardType: TextInputType.text,
+                          decoration: const InputDecoration(
+                            border: InputBorder.none,
+                            hintText: 'ID Card',
+                            hintStyle: TextStyle(
+                              color: Color.fromARGB(255, 41, 100, 140),
+                            ),
+                            icon: FaIcon(
+                              FontAwesomeIcons.idCard,
+                              size: 18,
+                              color: Color.fromARGB(255, 41, 100, 140),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+
+                  // // ID TextField
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        boxShadow: const [
+                          BoxShadow(
+                            color: Color.fromARGB(255, 45, 231, 255),
+                            blurRadius: 20.0,
+                            offset: Offset(0, 10),
+                          ),
+                        ],
+                        color: Colors.grey[100],
+                        border: Border.all(color: Colors.white),
+                        borderRadius: BorderRadius.circular(5),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 18, right: 5),
+                        child: TextField(
+                          controller: _positionController,
+                          keyboardType: TextInputType.text,
+                          decoration: const InputDecoration(
+                            border: InputBorder.none,
+                            hintText: 'Position',
+                            hintStyle: TextStyle(
+                              color: Color.fromARGB(255, 41, 100, 140),
+                            ),
+                            icon: FaIcon(
+                              FontAwesomeIcons.idCard,
+                              size: 18,
+                              color: Color.fromARGB(255, 41, 100, 140),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
 
                   const SizedBox(
                     height: 10,
@@ -431,6 +483,9 @@ class _RegisterPageState extends State<RegisterPage> {
                       child: Padding(
                         padding: const EdgeInsets.only(left: 15, right: 5),
                         child: TextField(
+                          onChanged: (value) {
+                            validateEmail(value);
+                          },
                           controller: _emailControl,
                           keyboardType: TextInputType.text,
                           decoration: const InputDecoration(
@@ -633,8 +688,13 @@ class _RegisterPageState extends State<RegisterPage> {
                       ),
                     ],
                   ),
+
                   const SizedBox(
-                    height: 50.0,
+                    height: 30.0,
+                  ),
+                  Text(
+                    _errorMessage,
+                    style: const TextStyle(color: Colors.red),
                   ),
                 ],
               ),
@@ -643,5 +703,21 @@ class _RegisterPageState extends State<RegisterPage> {
         ),
       ),
     );
+  }
+
+  void validateEmail(String value) {
+    if (value.isEmpty) {
+      setState(() {
+        _errorMessage = "Email can not be empty";
+      });
+    } else if (!EmailValidator.validate(value, true)) {
+      setState(() {
+        _errorMessage = "Invalid Email Address";
+      });
+    } else {
+      setState(() {
+        _errorMessage = "";
+      });
+    }
   }
 }

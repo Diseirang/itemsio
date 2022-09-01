@@ -39,23 +39,47 @@ class _ReportMemberState extends State<ReportMember> {
         padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
         //color: Colors.white,
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Text(
-                      userInfo['firstName'] + ' ' + userInfo['lastName'],
-                      style: const TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white),
-                    ),
-                  ],
+                Text(
+                  'Name : ' +
+                      userInfo['firstName'] +
+                      ' ' +
+                      userInfo['lastName'],
+                  style: const TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white),
                 ),
                 const SizedBox(
                   height: 5.0,
+                ),
+                Text(
+                  'ID : ' + userInfo["idCard"],
+                  style: const TextStyle(
+                      //fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white),
+                  textDirection: TextDirection.ltr,
+                  maxLines: 2,
+                ),
+                const SizedBox(
+                  height: 5.0,
+                ),
+                Text(
+                  'Email : ' + userInfo["email"],
+                  style: const TextStyle(
+                      //fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white),
+                  textDirection: TextDirection.ltr,
+                  maxLines: 2,
+                ),
+                const SizedBox(
+                  height: 5,
                 ),
                 // Row(
                 //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -80,20 +104,6 @@ class _ReportMemberState extends State<ReportMember> {
                 //   ],
                 // ),
               ],
-            ),
-            Row(
-              children: [
-                Text(
-                  userInfo["email"],
-                  style: const TextStyle(
-                      //fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white),
-                ),
-              ],
-            ),
-            const SizedBox(
-              height: 2.5,
             ),
           ],
         ),
