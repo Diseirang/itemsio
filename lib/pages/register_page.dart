@@ -168,7 +168,7 @@ class _RegisterPageState extends State<RegisterPage> {
       String usertName, String idCard, String position, String email) async {
     await FirebaseFirestore.instance.collection('UserInfo').doc(idCard).set(
       {
-        'usertName': usertName,
+        'userName': usertName,
         'idCard': idCard,
         'position': position,
         'email': email,
