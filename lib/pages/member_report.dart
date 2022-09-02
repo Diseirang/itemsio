@@ -45,10 +45,7 @@ class _ReportMemberState extends State<ReportMember> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Name : ' +
-                      userInfo['firstName'] +
-                      ' ' +
-                      userInfo['lastName'],
+                  'Name : ' + userInfo['userName'],
                   style: const TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
@@ -58,7 +55,19 @@ class _ReportMemberState extends State<ReportMember> {
                   height: 5.0,
                 ),
                 Text(
-                  'ID : ' + userInfo["idCard"],
+                  'ID : ' + userInfo["idCard"].toString(),
+                  style: const TextStyle(
+                      //fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white),
+                  textDirection: TextDirection.ltr,
+                  maxLines: 2,
+                ),
+                const SizedBox(
+                  height: 5.0,
+                ),
+                Text(
+                  'Position : ' + userInfo["position"].toString(),
                   style: const TextStyle(
                       //fontSize: 16,
                       fontWeight: FontWeight.bold,
