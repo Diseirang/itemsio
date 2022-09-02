@@ -77,7 +77,7 @@ class _DrawerState extends State<MyDrawer> {
                     onClicked: () => selectedItem(context, 2),
                   ),
                   buildMenuItem(
-                    text: 'About Developer',
+                    text: 'About',
                     icon: Icons.warning,
                     onClicked: () => selectedItem(context, 3),
                   ),
