@@ -237,24 +237,19 @@ class _ItemsInReportState extends State<ItemsInReport> {
               GoogleFonts.aclonica(fontWeight: FontWeight.bold, fontSize: 25),
         ),
       ),
-      body: Scrollbar(
-        thickness: 10,
-        thumbVisibility: true,
-        radius: const Radius.circular(10),
-        child: Container(
-          color: Colors.green[200],
-          child: SizedBox(
-            height: double.infinity,
-            child: FirebaseAnimatedList(
-              query: reference.orderByChild("TimeAdded"),
-              itemBuilder: (BuildContext context, DataSnapshot snapshot,
-                  Animation<double> animation, int index) {
-                Map itemsin = snapshot.value as Map;
-                itemsin['key'] = snapshot.key;
+      body: Container(
+        color: Colors.green[200],
+        child: SizedBox(
+          height: double.infinity,
+          child: FirebaseAnimatedList(
+            query: reference.orderByChild("TimeAdded"),
+            itemBuilder: (BuildContext context, DataSnapshot snapshot,
+                Animation<double> animation, int index) {
+              Map itemsin = snapshot.value as Map;
+              itemsin['key'] = snapshot.key;
 
-                return listItem(itemsin: itemsin);
-              },
-            ),
+              return listItem(itemsin: itemsin);
+            },
           ),
         ),
       ),
