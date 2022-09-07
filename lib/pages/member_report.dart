@@ -133,9 +133,9 @@ class _ReportMemberState extends State<ReportMember> {
         backgroundColor: const Color(0xFF29648C),
       ),
       body: Scrollbar(
-        thickness: 10,
+        thickness: 5,
+        radius: Radius.circular(10),
         thumbVisibility: true,
-        radius: const Radius.circular(10),
         child: Container(
           color: const Color.fromARGB(255, 24, 113, 172),
           child: SizedBox(

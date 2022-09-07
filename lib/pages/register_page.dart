@@ -635,25 +635,25 @@ class _RegisterPageState extends State<RegisterPage> {
                               offset: Offset(0, 5),
                             ),
                           ],
-                          border: Border.all(color: Colors.white, width: 4),
+                          border: Border.all(color: Colors.white, width: 2),
                           color: const Color(0xFF29648C),
                           borderRadius: BorderRadius.circular(50),
                         ),
                         child: Center(
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
-                            children: const [
-                              Icon(
+                            children: [
+                              const Icon(
                                 Icons.person_add_alt_outlined,
                                 color: Colors.white,
                                 size: 25,
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 width: 10,
                               ),
                               Text(
-                                'Sign Up',
-                                style: TextStyle(
+                                'Sign Up'.toUpperCase(),
+                                style: const TextStyle(
                                     color: Colors.white,
                                     fontWeight: FontWeight.bold,
                                     fontSize: 24),
