@@ -17,12 +17,12 @@ class ItemsOutReport extends StatefulWidget {
 class _ItemsOutReportState extends State<ItemsOutReport> {
   Query dbRef = FirebaseDatabase.instance
       .ref()
-      .child('ItemsOUT')
+      .child('itemsout')
       .orderByChild('TimeAdded');
   //.orderByChild('Date')
   //.startAt(DateTime.now());
   DatabaseReference reference =
-      FirebaseDatabase.instance.ref().child('ItemsOUT');
+      FirebaseDatabase.instance.ref().child('itemsout');
   Widget listItem({required Map itemsin}) {
     return Container(
       decoration: BoxDecoration(

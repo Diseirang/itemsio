@@ -56,7 +56,7 @@ class _ItemsOutPageState extends State<ItemsOutPage> {
       String campus,
       String time) async {
     await FirebaseFirestore.instance
-        .collection('ItemsOUT')
+        .collection('itemsout')
         .doc(campus + DateTime.now().toString())
         .set(
       {
@@ -88,7 +88,7 @@ class _ItemsOutPageState extends State<ItemsOutPage> {
       String campus,
       String time) {
     // String? key = databaseReference.child("ItemsOUT").child(campus) .child(takerID)        .push()        .key;
-    databaseReference.child("ItemsOUT").push().set(
+    databaseReference.child("itemsout").push().set(
       {
         //'Nº': key,
         'CurrentUser': user.email!,

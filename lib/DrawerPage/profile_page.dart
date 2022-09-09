@@ -13,8 +13,7 @@ class ProfilePage extends StatefulWidget {
 
 class _ProfilePageState extends State<ProfilePage> {
   final user = FirebaseAuth.instance.currentUser!;
-  DatabaseReference reference =
-      FirebaseDatabase.instance.ref().child('UserInfo');
+  DatabaseReference reference = FirebaseDatabase.instance.ref().child('users');
   //Query dbRef = FirebaseDatabase.instance.ref("UserInfo").equalTo(user.email!);
   @override
   Widget build(BuildContext context) {
@@ -30,7 +29,7 @@ class _ProfilePageState extends State<ProfilePage> {
       ),
       body: SafeArea(
         child: FirebaseAnimatedList(
-          query: FirebaseDatabase.instance.ref("UserInfo").equalTo(user.email!),
+          query: FirebaseDatabase.instance.ref("users").equalTo(user.email!),
           itemBuilder: (BuildContext context, DataSnapshot snapshot,
               Animation<double> animation, int index) {
             Map itemsin = snapshot.value as Map;

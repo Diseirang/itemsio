@@ -27,7 +27,7 @@ class _itemsOUTReportDetailsState extends State<itemsOUTReportDetails> {
   @override
   void initState() {
     super.initState();
-    dbRef = FirebaseDatabase.instance.ref().child('ItemsOUT');
+    dbRef = FirebaseDatabase.instance.ref().child('itemsout');
     getitemsOUTData();
   }
 

@@ -29,7 +29,7 @@ class _UpdateItemsINRecordState extends State<UpdateItemsINRecord> {
   @override
   void initState() {
     super.initState();
-    dbRef = FirebaseDatabase.instance.ref().child('ItemsIN');
+    dbRef = FirebaseDatabase.instance.ref().child('itemsin');
     getItemsINData();
   }
 

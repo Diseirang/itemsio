@@ -151,7 +151,7 @@ class _RegisterPageState extends State<RegisterPage> {
   void insertDataRealtime(
       String usertName, String idCard, String position, String email) {
     //String? key = databaseReference.child("UserInfo").push().key;
-    databaseReference.child("UserInfo").push().set(
+    databaseReference.child("users").push().set(
       {
         //'Nº': key,
         'userName': usertName,
@@ -166,7 +166,7 @@ class _RegisterPageState extends State<RegisterPage> {
   // Add data to firestore Database
   Future addUserDetailsStorage(
       String usertName, String idCard, String position, String email) async {
-    await FirebaseFirestore.instance.collection('UserInfo').doc(idCard).set(
+    await FirebaseFirestore.instance.collection('users').doc(idCard).set(
       {
         'userName': usertName,
         'idCard': idCard,

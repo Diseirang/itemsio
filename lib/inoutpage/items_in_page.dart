@@ -65,7 +65,7 @@ class _ItemsInPageState extends State<ItemsInPage> {
       String campus,
       String time) async {
     await FirebaseFirestore.instance
-        .collection('ItemsIN')
+        .collection('itemsin')
         .doc(campus + DateTime.now().toString())
         .set(
       {
@@ -97,7 +97,7 @@ class _ItemsInPageState extends State<ItemsInPage> {
       String campus,
       String time) {
     //String? key = databaseReference  .child("ItemsIN")        .child(campus)        .child(takerID)    .push()        .key;
-    databaseReference.child("ItemsIN").push().set(
+    databaseReference.child("itemsin").push().set(
       {
         //'Nº': key,
         'CurrentUser': user.email!,
