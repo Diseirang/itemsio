@@ -98,6 +98,13 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
     return Scaffold(
       backgroundColor: const Color(0xFF29648C),
       appBar: AppBar(
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back_ios),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          padding: const EdgeInsets.only(left: 20),
+        ),
         centerTitle: true,
         backgroundColor: const Color.fromARGB(255, 41, 100, 140),
         title: Text(

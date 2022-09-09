@@ -123,6 +123,13 @@ class _ReportMemberState extends State<ReportMember> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back_ios),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          padding: const EdgeInsets.only(left: 20),
+        ),
         title: Text(
           'Members'.toUpperCase(),
           style:

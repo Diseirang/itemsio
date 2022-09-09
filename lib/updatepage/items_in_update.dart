@@ -53,6 +53,13 @@ class _UpdateItemsINRecordState extends State<UpdateItemsINRecord> {
     return Scaffold(
       backgroundColor: Colors.grey[100],
       appBar: AppBar(
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back_ios),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          padding: const EdgeInsets.only(left: 20),
+        ),
         centerTitle: true,
         backgroundColor: const Color(0xFF29648C),
         title: Text(
@@ -253,7 +260,7 @@ class _UpdateItemsINRecordState extends State<UpdateItemsINRecord> {
                             offset: Offset(0, 5),
                           ),
                         ],
-                        border: Border.all(color: Colors.white, width: 4),
+                        border: Border.all(color: Colors.white, width: 2),
                         color: const Color(0xFF29648C),
                         borderRadius: BorderRadius.circular(50),
                       ),

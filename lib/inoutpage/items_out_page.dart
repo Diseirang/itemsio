@@ -17,7 +17,7 @@ class _ItemsOutPageState extends State<ItemsOutPage> {
   final takerIDController = TextEditingController();
   final positionController = TextEditingController();
   final departmentController = TextEditingController();
-  final itemsNametroller = TextEditingController();
+  final itemsNameController = TextEditingController();
   final quantityController = TextEditingController();
   final perposeController = TextEditingController();
   final dateController = TextEditingController();
@@ -34,7 +34,7 @@ class _ItemsOutPageState extends State<ItemsOutPage> {
     takerIDController.dispose();
     positionController.dispose();
     departmentController.dispose();
-    itemsNametroller.dispose();
+    itemsNameController.dispose();
     quantityController.dispose();
     perposeController.dispose();
     dateController.dispose();
@@ -108,7 +108,7 @@ class _ItemsOutPageState extends State<ItemsOutPage> {
     takerIDController.clear();
     positionController.clear();
     departmentController.clear();
-    itemsNametroller.clear();
+    itemsNameController.clear();
     quantityController.clear();
     perposeController.clear();
     dateController.clear();
@@ -125,8 +125,15 @@ class _ItemsOutPageState extends State<ItemsOutPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back_ios),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          padding: const EdgeInsets.only(left: 20),
+        ),
         centerTitle: true,
-        backgroundColor: const Color.fromARGB(255, 41, 100, 140),
+        backgroundColor: Colors.amber,
         title: Text(
           'Items Out'.toUpperCase(),
           style:
@@ -325,7 +332,7 @@ class _ItemsOutPageState extends State<ItemsOutPage> {
                               child: Padding(
                                 padding: const EdgeInsets.only(left: 20),
                                 child: TextField(
-                                  controller: itemsNametroller,
+                                  controller: itemsNameController,
                                   decoration: const InputDecoration(
                                     border: InputBorder.none,
                                     hintText: 'Item Name',
@@ -535,7 +542,7 @@ class _ItemsOutPageState extends State<ItemsOutPage> {
                                   blurRadius: 20.0,
                                   offset: Offset(0, 5)),
                             ],
-                            border: Border.all(color: Colors.white, width: 4),
+                            border: Border.all(color: Colors.white, width: 2),
                             color: const Color(0xFF29648C),
                             borderRadius: BorderRadius.circular(50),
                           ),
@@ -567,24 +574,24 @@ class _ItemsOutPageState extends State<ItemsOutPage> {
                               takerIDController.text.isNotEmpty &&
                               positionController.text.isNotEmpty &&
                               departmentController.text.isNotEmpty &&
-                              itemsNametroller.text.isNotEmpty &&
+                              itemsNameController.text.isNotEmpty &&
                               quantityController.text.isNotEmpty &&
                               perposeController.text.isNotEmpty &&
                               dateController.text.isNotEmpty &&
                               campusController.text.isNotEmpty) {
                             try {
                               // Insert Items OUT to Firestore database
-                              // insertItemsOUTFirestore(
-                              //     takerNameController.text.trim(),
-                              //     takerIDController.text.trim(),
-                              //     positionController.text.trim(),
-                              //     departmentController.text.trim(),
-                              //     itemsNametroller.text.trim(),
-                              //     int.parse(quantityController.text.trim()),
-                              //     perposeController.text.trim(),
-                              //     dateController.text.trim(),
-                              //     campusController.text.trim(),
-                              //     DateTime.now().toString());
+                              insertItemsOUTFirestore(
+                                  takerNameController.text.trim(),
+                                  takerIDController.text.trim(),
+                                  positionController.text.trim(),
+                                  departmentController.text.trim(),
+                                  itemsNameController.text.trim(),
+                                  int.parse(quantityController.text.trim()),
+                                  perposeController.text.trim(),
+                                  dateController.text.trim(),
+                                  campusController.text.trim(),
+                                  DateTime.now().toString());
 
                               // Insert Items OUT to Realtime database
                               insertItemsOUTRealtime(
@@ -592,7 +599,7 @@ class _ItemsOutPageState extends State<ItemsOutPage> {
                                   takerIDController.text.trim(),
                                   positionController.text.trim(),
                                   departmentController.text.trim(),
-                                  itemsNametroller.text.trim(),
+                                  itemsNameController.text.trim(),
                                   int.parse(quantityController.text.trim()),
                                   perposeController.text.trim(),
                                   dateController.text.trim(),

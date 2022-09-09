@@ -259,8 +259,15 @@ class _ItemsInPageState extends State<ItemsInPage> {
       inAsyncCall: showSpinner,
       child: Scaffold(
         appBar: AppBar(
+          leading: IconButton(
+            icon: const Icon(Icons.arrow_back_ios),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            padding: const EdgeInsets.only(left: 20),
+          ),
           centerTitle: true,
-          backgroundColor: const Color.fromARGB(255, 41, 100, 140),
+          backgroundColor: Colors.amber,
           title: Text(
             'Items IN'.toUpperCase(),
             style:
@@ -788,7 +795,7 @@ class _ItemsInPageState extends State<ItemsInPage> {
                                     blurRadius: 20.0,
                                     offset: Offset(0, 5)),
                               ],
-                              border: Border.all(color: Colors.white, width: 4),
+                              border: Border.all(color: Colors.white, width: 2),
                               color: const Color(0xFF29648C),
                               borderRadius: BorderRadius.circular(50),
                             ),
@@ -827,17 +834,17 @@ class _ItemsInPageState extends State<ItemsInPage> {
                                 campusController.text.isNotEmpty) {
                               try {
                                 // Insert Items OUT to Firestore database
-                                // insertItemsINFirestore(
-                                //     takerNameController.text.trim(),
-                                //     takerIDController.text.trim(),
-                                //     positionController.text.trim(),
-                                //     departmentController.text.trim(),
-                                //     itemsNametroller.text.trim(),
-                                //     int.parse(quantityController.text.trim()),
-                                //     perposeController.text.trim(),
-                                //     dateController.text.trim(),
-                                //     campusController.text.trim(),
-                                //     DateTime.now().toString());
+                                insertItemsINFirestore(
+                                    takerNameController.text.trim(),
+                                    takerIDController.text.trim(),
+                                    positionController.text.trim(),
+                                    departmentController.text.trim(),
+                                    itemsNameController.text.trim(),
+                                    int.parse(quantityController.text.trim()),
+                                    perposeController.text.trim(),
+                                    dateController.text.trim(),
+                                    campusController.text.trim(),
+                                    DateTime.now().toString());
 
                                 // Insert Items OUT to Realtime database
                                 insertItemsINRealtime(

@@ -53,6 +53,13 @@ class _ItemsInReportDetailsState extends State<ItemsInReportDetails> {
     return Scaffold(
       backgroundColor: Colors.blueGrey[800],
       appBar: AppBar(
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back_ios),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          padding: const EdgeInsets.only(left: 20),
+        ),
         elevation: 0.0,
         centerTitle: true,
         backgroundColor: const Color(0xFF29648C),
