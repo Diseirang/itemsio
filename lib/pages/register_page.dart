@@ -669,24 +669,24 @@ class _RegisterPageState extends State<RegisterPage> {
                   ),
 
                   // not a member? register now!
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Text(
-                        'Already a memeber?',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, color: Colors.white),
-                      ),
-                      GestureDetector(
-                        onTap: widget.showLoginPage,
-                        child: const Text(
+                  GestureDetector(
+                    onTap: widget.showLoginPage,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: const <Widget>[
+                        Text(
+                          'Already a memeber?',
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, color: Colors.white),
+                        ),
+                        Text(
                           ' Login now!',
                           style: TextStyle(
                             color: Color.fromARGB(255, 67, 255, 111),
                           ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
 
                   const SizedBox(

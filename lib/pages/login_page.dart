@@ -450,24 +450,24 @@ class _LoginPageState extends State<LoginPage> {
                     height: 15.0,
                   ),
                   // not a member? register now!
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Text(
-                        'Not a member?',
-                        style: TextStyle(color: Colors.white, fontSize: 16.0),
-                      ),
-                      GestureDetector(
-                        onTap: widget.showRegisterPage,
-                        child: const Text(
+                  GestureDetector(
+                    onTap: widget.showRegisterPage,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: const <Widget>[
+                        Text(
+                          'Not a member?',
+                          style: TextStyle(color: Colors.white, fontSize: 16.0),
+                        ),
+                        Text(
                           ' Sign Up',
                           style: TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.bold,
                               fontSize: 16.0),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
 
                   // Padding(
