@@ -200,7 +200,6 @@ class _ItemsOutReportState extends State<ItemsOutReport> {
     );
   }
 
-  final ScrollController _scrollbarController = ScrollController();
 
   @override
   Widget build(BuildContext context) {
@@ -223,7 +222,8 @@ class _ItemsOutReportState extends State<ItemsOutReport> {
       ),
       body: Scrollbar(
         thickness: 5,
-        radius: Radius.circular(10),
+        radius: const Radius.circular(10),
+        // ignore: deprecated_member_use
         hoverThickness: 20,
         thumbVisibility: true,
         child: Container(

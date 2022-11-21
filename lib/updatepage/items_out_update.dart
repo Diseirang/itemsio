@@ -183,6 +183,7 @@ class _UpdateItemsOutRecordState extends State<UpdateItemsOutRecord> {
                         },
                       );
                     } else {
+                      // ignore: use_build_context_synchronously
                       showDialog(
                         context: context,
                         builder: (context) {

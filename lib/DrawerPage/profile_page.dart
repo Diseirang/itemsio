@@ -35,36 +35,34 @@ class _ProfilePageState extends State<ProfilePage> {
             Map itemsin = snapshot.value as Map;
             itemsin['key'] = snapshot.key;
 
-            return Container(
-              child: Padding(
+            return Padding(
+              padding: const EdgeInsets.all(10),
+              child: Card(
+                  child: Padding(
                 padding: const EdgeInsets.all(10),
-                child: Card(
-                    child: Padding(
-                  padding: const EdgeInsets.all(10),
-                  child: Column(
-                    children: [
-                      Row(
-                        children: const [
-                          Text(
-                            'Name : ',
-                            style: TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.white),
-                          ),
-                          Text(
-                            'Name : ',
-                            style: TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.white),
-                          ),
-                        ],
-                      )
-                    ],
-                  ),
-                )),
-              ),
+                child: Column(
+                  children: [
+                    Row(
+                      children: const [
+                        Text(
+                          'Name : ',
+                          style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white),
+                        ),
+                        Text(
+                          'Name : ',
+                          style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white),
+                        ),
+                      ],
+                    )
+                  ],
+                ),
+              )),
             );
           },
         ),

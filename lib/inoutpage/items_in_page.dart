@@ -667,6 +667,7 @@ class _ItemsInPageState extends State<ItemsInPage> {
                                           },
                                         );
                                       } else {
+                                        // ignore: use_build_context_synchronously
                                         showDialog(
                                           context: context,
                                           builder: (context) {

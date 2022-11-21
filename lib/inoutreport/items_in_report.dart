@@ -246,7 +246,8 @@ class _ItemsInReportState extends State<ItemsInReport> {
       ),
       body: Scrollbar(
         thickness: 5,
-        radius: Radius.circular(10),
+        radius: const Radius.circular(10),
+        // ignore: deprecated_member_use
         hoverThickness: 20,
         thumbVisibility: true,
         child: Container(

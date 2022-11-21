@@ -14,7 +14,7 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  final textStyle = TextStyle();
+  final textStyle = const TextStyle();
 
   bool _isHiddenPassword = true;
   // Text controller
@@ -77,7 +77,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ),
           ),
-          Container(
+          SizedBox(
             height: double.infinity,
             child: SingleChildScrollView(
               physics: const AlwaysScrollableScrollPhysics(),

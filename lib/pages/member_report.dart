@@ -140,7 +140,7 @@ class _ReportMemberState extends State<ReportMember> {
       ),
       body: Scrollbar(
         thickness: 5,
-        radius: Radius.circular(10),
+        radius: const Radius.circular(10),
         thumbVisibility: true,
         child: Container(
           color: const Color.fromARGB(255, 24, 113, 172),
