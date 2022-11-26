@@ -27,7 +27,7 @@ class _ItemsInPageState extends State<ItemsInPage> {
   final departmentController = TextEditingController();
   final itemsNameController = TextEditingController();
   final quantityController = TextEditingController();
-  final perposeController = TextEditingController();
+  final purposeController = TextEditingController();
   final dateController = TextEditingController();
   final campusController = TextEditingController();
 
@@ -45,7 +45,7 @@ class _ItemsInPageState extends State<ItemsInPage> {
     departmentController.dispose();
     itemsNameController.dispose();
     quantityController.dispose();
-    perposeController.dispose();
+    purposeController.dispose();
     dateController.dispose();
     campusController.dispose();
     super.dispose();
@@ -120,7 +120,7 @@ class _ItemsInPageState extends State<ItemsInPage> {
     departmentController.clear();
     itemsNameController.clear();
     quantityController.clear();
-    perposeController.clear();
+    purposeController.clear();
     dateController.clear();
     campusController.clear();
   }
@@ -284,298 +284,42 @@ class _ItemsInPageState extends State<ItemsInPage> {
                     padding: const EdgeInsets.all(25),
                     child: Column(
                       children: <Widget>[
-                        // InkWell(
-                        //   onTap: () {
-                        //     dialog(context);
-                        //   },
-                        //   child: SizedBox(
-                        //     height: MediaQuery.of(context).size.height * .2,
-                        //     width: double.infinity,
-                        //     child: image != null
-                        //         ? ClipRect(
-                        //             child: Image.file(
-                        //               image!.absolute,
-                        //               width: 100,
-                        //               height: 100,
-                        //               fit: BoxFit.fitHeight,
-                        //             ),
-                        //           )
-                        //         : Container(
-                        //             decoration: BoxDecoration(
-                        //               color: Colors.grey.shade200,
-                        //               borderRadius: BorderRadius.circular(10),
-                        //             ),
-                        //             width: 100,
-                        //             height: 100,
-                        //             child: const Icon(
-                        //               Icons.camera_alt,
-                        //               color: Color.fromARGB(255, 41, 100, 140),
-                        //             ),
-                        //           ),
-                        //   ),
-                        // ),
-                        // const SizedBox(
-                        //   height: 10,
-                        // ),
-                        Container(
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(5),
-                            boxShadow: const [
-                              BoxShadow(
-                                color: Color.fromARGB(255, 45, 231, 255),
-                                blurRadius: 20.0,
-                                offset: Offset(0, 10),
-                              ),
-                            ],
-                          ),
-                          child: Column(
-                            children: <Widget>[
-                              Container(
-                                decoration: BoxDecoration(
-                                  color: Colors.grey[100],
-                                  border: Border.all(color: Colors.white),
-                                  borderRadius: BorderRadius.circular(12),
-                                ),
-                                child: Padding(
-                                  padding: const EdgeInsets.only(left: 20),
-                                  child: TextField(
-                                    keyboardType: TextInputType.text,
-                                    controller: takerNameController,
-                                    decoration: const InputDecoration(
-                                      border: InputBorder.none,
-                                      hintText: 'Staff Name',
-                                      hintStyle: TextStyle(
-                                        color:
-                                            Color.fromARGB(255, 41, 100, 140),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
+                        InputField(
+                          keyboardType: TextInputType.text,
+                          controller: takerNameController,
+                          myhintText: 'Staff Name',
                         ),
-                        const SizedBox(
-                          height: 10,
+                        InputField(
+                          keyboardType: TextInputType.number,
+                          controller: takerIDController,
+                          myhintText: 'ID',
                         ),
-                        Container(
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(5),
-                            boxShadow: const [
-                              BoxShadow(
-                                color: Color.fromARGB(255, 45, 231, 255),
-                                blurRadius: 20.0,
-                                offset: Offset(0, 10),
-                              ),
-                            ],
-                          ),
-                          child: Column(
-                            children: <Widget>[
-                              InputField(
-                                controller: takerIDController,
-                                keyboardType: TextInputType.number,
-                                myhintText: 'ID',
-                              ),
-                            ],
-                          ),
+                        InputField(
+                          keyboardType: TextInputType.text,
+                          controller: positionController,
+                          myhintText: 'Position',
                         ),
-                        const SizedBox(
-                          height: 10,
+
+                        InputField(
+                          keyboardType: TextInputType.text,
+                          controller: departmentController,
+                          myhintText: 'Department',
                         ),
-                        Container(
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(5),
-                            boxShadow: const [
-                              BoxShadow(
-                                color: Color.fromARGB(255, 45, 231, 255),
-                                blurRadius: 20.0,
-                                offset: Offset(0, 10),
-                              ),
-                            ],
-                          ),
-                          child: Column(
-                            children: <Widget>[
-                              InputField(
-                                controller: positionController,
-                                keyboardType: TextInputType.text,
-                                myhintText: 'Position',
-                              ),
-                            ],
-                          ),
+
+                        InputField(
+                          keyboardType: TextInputType.text,
+                          controller: itemsNameController,
+                          myhintText: 'Item Name',
                         ),
-                        const SizedBox(
-                          height: 10,
+                        InputField(
+                          keyboardType: TextInputType.number,
+                          controller: quantityController,
+                          myhintText: 'Quantity',
                         ),
-                        Container(
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(5),
-                            boxShadow: const [
-                              BoxShadow(
-                                color: Color.fromARGB(255, 45, 231, 255),
-                                blurRadius: 20.0,
-                                offset: Offset(0, 10),
-                              ),
-                            ],
-                          ),
-                          child: Column(
-                            children: <Widget>[
-                              Container(
-                                decoration: BoxDecoration(
-                                  color: Colors.grey[100],
-                                  border: Border.all(color: Colors.white),
-                                  borderRadius: BorderRadius.circular(12),
-                                ),
-                                child: Padding(
-                                  padding: const EdgeInsets.only(left: 20),
-                                  child: TextField(
-                                    keyboardType: TextInputType.text,
-                                    controller: departmentController,
-                                    decoration: const InputDecoration(
-                                      border: InputBorder.none,
-                                      hintText: 'Department',
-                                      hintStyle: TextStyle(
-                                        color:
-                                            Color.fromARGB(255, 41, 100, 140),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        Container(
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(5),
-                            boxShadow: const [
-                              BoxShadow(
-                                color: Color.fromARGB(255, 45, 231, 255),
-                                blurRadius: 20.0,
-                                offset: Offset(0, 10),
-                              ),
-                            ],
-                          ),
-                          child: Column(
-                            children: <Widget>[
-                              Container(
-                                decoration: BoxDecoration(
-                                  color: Colors.grey[100],
-                                  border: Border.all(color: Colors.white),
-                                  borderRadius: BorderRadius.circular(12),
-                                ),
-                                child: Padding(
-                                  padding: const EdgeInsets.only(left: 20),
-                                  child: TextField(
-                                    keyboardType: TextInputType.text,
-                                    controller: itemsNameController,
-                                    decoration: const InputDecoration(
-                                      border: InputBorder.none,
-                                      hintText: 'Item Name',
-                                      hintStyle: TextStyle(
-                                        color:
-                                            Color.fromARGB(255, 41, 100, 140),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        Container(
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(5),
-                            boxShadow: const [
-                              BoxShadow(
-                                color: Color.fromARGB(255, 45, 231, 255),
-                                blurRadius: 20.0,
-                                offset: Offset(0, 10),
-                              ),
-                            ],
-                          ),
-                          child: Column(
-                            children: <Widget>[
-                              Container(
-                                decoration: BoxDecoration(
-                                  color: Colors.grey[100],
-                                  border: Border.all(color: Colors.white),
-                                  borderRadius: BorderRadius.circular(12),
-                                ),
-                                child: Padding(
-                                  padding: const EdgeInsets.only(left: 20),
-                                  child: TextField(
-                                    keyboardType: TextInputType.number,
-                                    controller: quantityController,
-                                    decoration: const InputDecoration(
-                                      border: InputBorder.none,
-                                      hintText: 'Quantity',
-                                      hintStyle: TextStyle(
-                                        color:
-                                            Color.fromARGB(255, 41, 100, 140),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        Container(
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(5),
-                            boxShadow: const [
-                              BoxShadow(
-                                color: Color.fromARGB(255, 45, 231, 255),
-                                blurRadius: 20.0,
-                                offset: Offset(0, 10),
-                              ),
-                            ],
-                          ),
-                          child: Column(
-                            children: <Widget>[
-                              Container(
-                                decoration: BoxDecoration(
-                                  color: Colors.grey[100],
-                                  border: Border.all(color: Colors.white),
-                                  borderRadius: BorderRadius.circular(12),
-                                ),
-                                child: Padding(
-                                  padding: const EdgeInsets.only(left: 20),
-                                  child: TextField(
-                                    keyboardType: TextInputType.text,
-                                    controller: perposeController,
-                                    decoration: const InputDecoration(
-                                      border: InputBorder.none,
-                                      hintText: 'Purpose',
-                                      hintStyle: TextStyle(
-                                        color:
-                                            Color.fromARGB(255, 41, 100, 140),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 10,
+                        InputField(
+                          keyboardType: TextInputType.text,
+                          controller: purposeController,
+                          myhintText: 'Purpose',
                         ),
                         Container(
                           decoration: BoxDecoration(
@@ -665,46 +409,10 @@ class _ItemsInPageState extends State<ItemsInPage> {
                         const SizedBox(
                           height: 10,
                         ),
-                        Container(
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(5),
-                            boxShadow: const [
-                              BoxShadow(
-                                color: Color.fromARGB(255, 45, 231, 255),
-                                blurRadius: 20.0,
-                                offset: Offset(0, 10),
-                              ),
-                            ],
-                          ),
-                          child: Column(
-                            children: <Widget>[
-                              Container(
-                                decoration: BoxDecoration(
-                                  color: Colors.grey[100],
-                                  border: Border.all(color: Colors.white),
-                                  borderRadius: BorderRadius.circular(12),
-                                ),
-                                child: Padding(
-                                  padding: const EdgeInsets.only(left: 20),
-                                  child: TextField(
-                                    controller: campusController,
-                                    decoration: const InputDecoration(
-                                      border: InputBorder.none,
-                                      hintText: 'Campus',
-                                      hintStyle: TextStyle(
-                                        color:
-                                            Color.fromARGB(255, 41, 100, 140),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 20,
+                        InputField(
+                          keyboardType: TextInputType.text,
+                          controller: campusController,
+                          myhintText: 'Campus',
                         ),
                         // Row(
                         //   mainAxisAlignment: MainAxisAlignment.start,
@@ -797,7 +505,7 @@ class _ItemsInPageState extends State<ItemsInPage> {
                                 departmentController.text.isNotEmpty &&
                                 itemsNameController.text.isNotEmpty &&
                                 quantityController.text.isNotEmpty &&
-                                perposeController.text.isNotEmpty &&
+                                purposeController.text.isNotEmpty &&
                                 dateController.text.isNotEmpty &&
                                 campusController.text.isNotEmpty) {
                               try {
@@ -809,7 +517,7 @@ class _ItemsInPageState extends State<ItemsInPage> {
                                     departmentController.text.trim(),
                                     itemsNameController.text.trim(),
                                     int.parse(quantityController.text.trim()),
-                                    perposeController.text.trim(),
+                                    purposeController.text.trim(),
                                     dateController.text.trim(),
                                     campusController.text.trim(),
                                     DateTime.now().toString());
@@ -822,7 +530,7 @@ class _ItemsInPageState extends State<ItemsInPage> {
                                     departmentController.text.trim(),
                                     itemsNameController.text.trim(),
                                     int.parse(quantityController.text.trim()),
-                                    perposeController.text.trim(),
+                                    purposeController.text.trim(),
                                     dateController.text.trim(),
                                     campusController.text.trim(),
                                     DateTime.now().toString());
