@@ -10,6 +10,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
+import 'package:items_io/Widget/textField.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
 class ItemsInPage extends StatefulWidget {
@@ -372,27 +373,10 @@ class _ItemsInPageState extends State<ItemsInPage> {
                           ),
                           child: Column(
                             children: <Widget>[
-                              Container(
-                                decoration: BoxDecoration(
-                                  color: Colors.grey[100],
-                                  border: Border.all(color: Colors.white),
-                                  borderRadius: BorderRadius.circular(12),
-                                ),
-                                child: Padding(
-                                  padding: const EdgeInsets.only(left: 20),
-                                  child: TextField(
-                                    keyboardType: TextInputType.phone,
-                                    controller: takerIDController,
-                                    decoration: const InputDecoration(
-                                      border: InputBorder.none,
-                                      hintText: 'ID',
-                                      hintStyle: TextStyle(
-                                        color:
-                                            Color.fromARGB(255, 41, 100, 140),
-                                      ),
-                                    ),
-                                  ),
-                                ),
+                              InputField(
+                                controller: takerIDController,
+                                keyboardType: TextInputType.number,
+                                myhintText: 'ID',
                               ),
                             ],
                           ),
@@ -414,27 +398,10 @@ class _ItemsInPageState extends State<ItemsInPage> {
                           ),
                           child: Column(
                             children: <Widget>[
-                              Container(
-                                decoration: BoxDecoration(
-                                  color: Colors.grey[100],
-                                  border: Border.all(color: Colors.white),
-                                  borderRadius: BorderRadius.circular(12),
-                                ),
-                                child: Padding(
-                                  padding: const EdgeInsets.only(left: 20),
-                                  child: TextField(
-                                    keyboardType: TextInputType.text,
-                                    controller: positionController,
-                                    decoration: const InputDecoration(
-                                      border: InputBorder.none,
-                                      hintText: 'Position',
-                                      hintStyle: TextStyle(
-                                        color:
-                                            Color.fromARGB(255, 41, 100, 140),
-                                      ),
-                                    ),
-                                  ),
-                                ),
+                              InputField(
+                                controller: positionController,
+                                keyboardType: TextInputType.text,
+                                myhintText: 'Position',
                               ),
                             ],
                           ),
