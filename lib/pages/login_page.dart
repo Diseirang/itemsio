@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:items_io/Widget/textFieldwidget.dart';
 import '../Provider/google_sign_in.dart';
 import 'forgotpassword_page.dart';
 import 'package:provider/provider.dart';
@@ -178,21 +179,10 @@ class _LoginPageState extends State<LoginPage> {
                                 child: Padding(
                                   padding: const EdgeInsets.only(
                                       left: 20, right: 10),
-                                  child: TextField(
+                                  child: TextFieldForm(
                                     controller: _emailControl,
-                                    decoration: const InputDecoration(
-                                      border: InputBorder.none,
-                                      hintText: 'Enter your Email',
-                                      hintStyle: TextStyle(
-                                        color:
-                                            Color.fromARGB(255, 41, 100, 140),
-                                      ),
-                                      icon: Icon(
-                                        Icons.mail,
-                                        color:
-                                            Color.fromARGB(255, 41, 100, 140),
-                                      ),
-                                    ),
+                                    hintText: 'Enter your Email',
+                                    icon: Icons.mail,
                                   ),
                                 ),
                               ),
