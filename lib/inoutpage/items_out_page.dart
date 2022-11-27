@@ -20,7 +20,7 @@ class _ItemsOutPageState extends State<ItemsOutPage> {
   final departmentController = TextEditingController();
   final itemsNameController = TextEditingController();
   final quantityController = TextEditingController();
-  final perposeController = TextEditingController();
+  final purposeController = TextEditingController();
   final dateController = TextEditingController();
   final campusController = TextEditingController();
 
@@ -37,7 +37,7 @@ class _ItemsOutPageState extends State<ItemsOutPage> {
     departmentController.dispose();
     itemsNameController.dispose();
     quantityController.dispose();
-    perposeController.dispose();
+    purposeController.dispose();
     dateController.dispose();
     campusController.dispose();
     super.dispose();
@@ -111,7 +111,7 @@ class _ItemsOutPageState extends State<ItemsOutPage> {
     departmentController.clear();
     itemsNameController.clear();
     quantityController.clear();
-    perposeController.clear();
+    purposeController.clear();
     dateController.clear();
     campusController.clear();
   }
@@ -150,7 +150,17 @@ class _ItemsOutPageState extends State<ItemsOutPage> {
                   padding: const EdgeInsets.all(25),
                   child: Column(
                     children: <Widget>[
-                      TextFieldFormWidget(),
+                      TextFieldFormWidget(
+                        takerNameController: takerNameController,
+                        takerIDController: takerIDController,
+                        positionController: positionController,
+                        departmentController: departmentController,
+                        itemsNameController: itemsNameController,
+                        quantityController: quantityController,
+                        purposeController: purposeController,
+                        dateController: dateController,
+                        campusController: campusController,
+                      ),
                       GestureDetector(
                         child: Container(
                           padding: const EdgeInsets.all(15),
@@ -195,7 +205,7 @@ class _ItemsOutPageState extends State<ItemsOutPage> {
                               departmentController.text.isNotEmpty &&
                               itemsNameController.text.isNotEmpty &&
                               quantityController.text.isNotEmpty &&
-                              perposeController.text.isNotEmpty &&
+                              purposeController.text.isNotEmpty &&
                               dateController.text.isNotEmpty &&
                               campusController.text.isNotEmpty) {
                             try {
@@ -207,7 +217,7 @@ class _ItemsOutPageState extends State<ItemsOutPage> {
                                   departmentController.text.trim(),
                                   itemsNameController.text.trim(),
                                   int.parse(quantityController.text.trim()),
-                                  perposeController.text.trim(),
+                                  purposeController.text.trim(),
                                   dateController.text.trim(),
                                   campusController.text.trim(),
                                   DateTime.now().toString());
@@ -220,7 +230,7 @@ class _ItemsOutPageState extends State<ItemsOutPage> {
                                   departmentController.text.trim(),
                                   itemsNameController.text.trim(),
                                   int.parse(quantityController.text.trim()),
-                                  perposeController.text.trim(),
+                                  purposeController.text.trim(),
                                   dateController.text.trim(),
                                   campusController.text.trim(),
                                   DateTime.now().toString());

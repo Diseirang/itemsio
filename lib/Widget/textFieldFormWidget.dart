@@ -1,126 +1,104 @@
-import 'package:flutter/material.dart'; 
+import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+import 'customDatePicker.dart';
 import 'textField.dart';
 
-class TextFieldFormWidget extends StatelessWidget {
+class TextFieldFormWidget extends StatefulWidget {
   final TextEditingController takerNameController;
- final TextEditingController takerIDController;
- 
-   final positionController = TextEditingController();
-  final departmentController = TextEditingController();
-  final itemsNameController = TextEditingController();
-  final quantityController = TextEditingController();
-  final purposeController = TextEditingController();
-  final dateController = TextEditingController();
-  final campusController = TextEditingController();
-  const TextFieldFormWidget({super.key}, this.taker);
+  final TextEditingController takerIDController;
+  final TextEditingController positionController;
+  final TextEditingController departmentController;
+  final TextEditingController itemsNameController;
+  final TextEditingController quantityController;
+  final TextEditingController purposeController;
+  final TextEditingController dateController;
+  final TextEditingController campusController;
 
+  const TextFieldFormWidget({
+    super.key,
+    required this.takerNameController,
+    required this.takerIDController,
+    required this.positionController,
+    required this.departmentController,
+    required this.itemsNameController,
+    required this.quantityController,
+    required this.purposeController,
+    required this.dateController,
+    required this.campusController,
+  });
+
+  @override
+  State<TextFieldFormWidget> createState() => _TextFieldFormWidgetState();
+}
+
+class _TextFieldFormWidgetState extends State<TextFieldFormWidget> {
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         InputField(
-                          keyboardType: TextInputType.text,
-                          controller: takerNameController,
-                          myhintText: 'Staff Name',
-                        ),
-                        InputField(
-                          keyboardType: TextInputType.number,
-                          controller: takerIDController,
-                          myhintText: 'ID',
-                        ),
-                        InputField(
-                          keyboardType: TextInputType.text,
-                          controller: positionController,
-                          myhintText: 'Position',
-                        ),
-                        InputField(
-                          keyboardType: TextInputType.text,
-                          controller: departmentController,
-                          myhintText: 'Department',
-                        ),
-                        InputField(
-                          keyboardType: TextInputType.text,
-                          controller: itemsNameController,
-                          myhintText: 'Item Name',
-                        ),
-                        InputField(
-                          keyboardType: TextInputType.number,
-                          controller: quantityController,
-                          myhintText: 'Quantity',
-                        ),
-                        InputField(
-                          keyboardType: TextInputType.text,
-                          controller: purposeController,
-                          myhintText: 'Purpose',
-                        ),
-                        Container(
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(5),
-                            boxShadow: const [
-                              BoxShadow(
-                                color: Color.fromARGB(255, 45, 231, 255),
-                                blurRadius: 20.0,
-                                offset: Offset(0, 10),
-                              ),
-                            ],
-                          ),
-                          child: Column(
-                            children: <Widget>[
-                              CustomDatePicker(
-                                dateController: dateController,
-                                function: () async {
-                                  DateTime? pickedDate = await showDatePicker(
-                                      context: context,
-                                      initialDate: DateTime.now(),
-                                      firstDate: DateTime(
-                                          2000), //DateTime.now() - not to allow to choose before today.
-                                      lastDate: DateTime(2101));
-                                  if (pickedDate != null) {
-                                    String formattedDate =
-                                        DateFormat('MM-dd-yyyy')
-                                            .format(pickedDate);
-                                    //print(formattedDate);
-                                    setState(
-                                      () {
-                                        dateController.text = formattedDate;
-                                      },
-                                    );
-                                  } else {
-                                    // ignore: use_build_context_synchronously
-                                    showDialog(
-                                      context: context,
-                                      builder: (context) {
-                                        return const AlertDialog(
-                                          backgroundColor:
-                                              Color.fromARGB(255, 41, 100, 140),
-                                          title: Text(
-                                            'Invalided Date!',
-                                            style:
-                                                TextStyle(color: Colors.white),
-                                          ),
-                                          content: Text(
-                                            'Date is not selected',
-                                            style:
-                                                TextStyle(color: Colors.white),
-                                          ),
-                                        );
-                                      },
-                                    );
-                                  }
-                                },
-                              )
-                            ],
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        InputField(
-                          keyboardType: TextInputType.text,
-                          controller: campusController,
-                          myhintText: 'Campus',
-                        ),
+          keyboardType: TextInputType.text,
+          controller: widget.takerNameController,
+          myhintText: 'Staff Name',
+        ),
+        InputField(
+          keyboardType: TextInputType.number,
+          controller: widget.takerIDController,
+          myhintText: 'ID',
+        ),
+        InputField(
+          keyboardType: TextInputType.text,
+          controller: widget.positionController,
+          myhintText: 'Position',
+        ),
+        InputField(
+          keyboardType: TextInputType.text,
+          controller: widget.departmentController,
+          myhintText: 'Department',
+        ),
+        InputField(
+          keyboardType: TextInputType.text,
+          controller: widget.itemsNameController,
+          myhintText: 'Item Name',
+        ),
+        InputField(
+          keyboardType: TextInputType.number,
+          controller: widget.quantityController,
+          myhintText: 'Quantity',
+        ),
+        InputField(
+          keyboardType: TextInputType.text,
+          controller: widget.purposeController,
+          myhintText: 'Purpose',
+        ),
+        Container(
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(5),
+            boxShadow: const [
+              BoxShadow(
+                color: Color.fromARGB(255, 45, 231, 255),
+                blurRadius: 20.0,
+                offset: Offset(0, 10),
+              ),
+            ],
+          ),
+          child: Column(
+            children: <Widget>[
+              CustomDatePicker(
+                dateController: widget.dateController,
+              )
+            ],
+          ),
+        ),
+        const SizedBox(
+          height: 10,
+        ),
+        InputField(
+          keyboardType: TextInputType.text,
+          controller: widget.campusController,
+          myhintText: 'Campus',
+        ),
       ],
     );
   }

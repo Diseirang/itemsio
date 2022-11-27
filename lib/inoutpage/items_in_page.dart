@@ -8,11 +8,10 @@ import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:intl/intl.dart';
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
-import 'package:items_io/Widget/customDatePicker.dart';
-import 'package:items_io/Widget/textField.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
+
+import '../Widget/textFieldFormWidget.dart';
 
 class ItemsInPage extends StatefulWidget {
   const ItemsInPage({super.key});
@@ -285,7 +284,17 @@ class _ItemsInPageState extends State<ItemsInPage> {
                     padding: const EdgeInsets.all(25),
                     child: Column(
                       children: <Widget>[
-                        TextFieldFormWidget(),
+                        TextFieldFormWidget(
+                          takerNameController: takerNameController,
+                          takerIDController: takerIDController,
+                          positionController: positionController,
+                          departmentController: departmentController,
+                          itemsNameController: itemsNameController,
+                          quantityController: quantityController,
+                          purposeController: purposeController,
+                          dateController: dateController,
+                          campusController: campusController,
+                        ),
                         // Row(
                         //   mainAxisAlignment: MainAxisAlignment.start,
                         //   children: const [
