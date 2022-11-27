@@ -10,6 +10,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
+import 'package:items_io/Widget/customDatePicker.dart';
 import 'package:items_io/Widget/textField.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
@@ -284,136 +285,7 @@ class _ItemsInPageState extends State<ItemsInPage> {
                     padding: const EdgeInsets.all(25),
                     child: Column(
                       children: <Widget>[
-                        InputField(
-                          keyboardType: TextInputType.text,
-                          controller: takerNameController,
-                          myhintText: 'Staff Name',
-                        ),
-                        InputField(
-                          keyboardType: TextInputType.number,
-                          controller: takerIDController,
-                          myhintText: 'ID',
-                        ),
-                        InputField(
-                          keyboardType: TextInputType.text,
-                          controller: positionController,
-                          myhintText: 'Position',
-                        ),
-
-                        InputField(
-                          keyboardType: TextInputType.text,
-                          controller: departmentController,
-                          myhintText: 'Department',
-                        ),
-
-                        InputField(
-                          keyboardType: TextInputType.text,
-                          controller: itemsNameController,
-                          myhintText: 'Item Name',
-                        ),
-                        InputField(
-                          keyboardType: TextInputType.number,
-                          controller: quantityController,
-                          myhintText: 'Quantity',
-                        ),
-                        InputField(
-                          keyboardType: TextInputType.text,
-                          controller: purposeController,
-                          myhintText: 'Purpose',
-                        ),
-                        Container(
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(5),
-                            boxShadow: const [
-                              BoxShadow(
-                                color: Color.fromARGB(255, 45, 231, 255),
-                                blurRadius: 20.0,
-                                offset: Offset(0, 10),
-                              ),
-                            ],
-                          ),
-                          child: Column(
-                            children: <Widget>[
-                              Container(
-                                decoration: BoxDecoration(
-                                  color: Colors.grey[100],
-                                  border: Border.all(color: Colors.white),
-                                  borderRadius: BorderRadius.circular(12),
-                                ),
-                                child: Padding(
-                                  padding: const EdgeInsets.only(left: 20),
-                                  child: TextField(
-                                    keyboardType: TextInputType.none,
-                                    controller: dateController,
-                                    decoration: const InputDecoration(
-                                      border: InputBorder.none,
-                                      hintText: 'Date',
-                                      hintStyle: TextStyle(
-                                        color:
-                                            Color.fromARGB(255, 41, 100, 140),
-                                      ),
-                                      suffixIcon: Icon(
-                                        Icons.calendar_month,
-                                        color:
-                                            Color.fromARGB(255, 41, 100, 140),
-                                      ),
-                                    ),
-                                    onTap: () async {
-                                      DateTime? pickedDate =
-                                          await showDatePicker(
-                                              context: context,
-                                              initialDate: DateTime.now(),
-                                              firstDate: DateTime(
-                                                  2000), //DateTime.now() - not to allow to choose before today.
-                                              lastDate: DateTime(2101));
-                                      if (pickedDate != null) {
-                                        String formattedDate =
-                                            DateFormat('MM-dd-yyyy')
-                                                .format(pickedDate);
-                                        //print(formattedDate);
-                                        setState(
-                                          () {
-                                            dateController.text = formattedDate;
-                                          },
-                                        );
-                                      } else {
-                                        // ignore: use_build_context_synchronously
-                                        showDialog(
-                                          context: context,
-                                          builder: (context) {
-                                            return const AlertDialog(
-                                              backgroundColor: Color.fromARGB(
-                                                  255, 41, 100, 140),
-                                              title: Text(
-                                                'Invalided Date!',
-                                                style: TextStyle(
-                                                    color: Colors.white),
-                                              ),
-                                              content: Text(
-                                                'Date is not selected',
-                                                style: TextStyle(
-                                                    color: Colors.white),
-                                              ),
-                                            );
-                                          },
-                                        );
-                                      }
-                                    },
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        InputField(
-                          keyboardType: TextInputType.text,
-                          controller: campusController,
-                          myhintText: 'Campus',
-                        ),
+                        TextFieldFormWidget(),
                         // Row(
                         //   mainAxisAlignment: MainAxisAlignment.start,
                         //   children: const [
