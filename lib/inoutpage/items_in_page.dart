@@ -9,6 +9,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
+import 'package:items_io/Widget/customButton.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
 import '../Widget/textFieldFormWidget.dart';
@@ -295,89 +296,56 @@ class _ItemsInPageState extends State<ItemsInPage> {
                           dateController: dateController,
                           campusController: campusController,
                         ),
-                        // Row(
-                        //   mainAxisAlignment: MainAxisAlignment.start,
-                        //   children: const [
-                        //     Text(
-                        //       'Choose image: ',
-                        //       style: TextStyle(
-                        //           fontWeight: FontWeight.bold,
-                        //           color: Colors.white),
-                        //     ),
-                        //   ],
-                        // ),
-                        // const SizedBox(
-                        //   height: 10,
-                        // ),
-                        // Container(
-                        //   decoration: const BoxDecoration(
-                        //     color: Colors.white,
-                        //     boxShadow: [
-                        //       BoxShadow(
-                        //         color: Color.fromARGB(255, 45, 231, 255),
-                        //         blurRadius: 20.0,
-                        //         offset: Offset(0, 10),
-                        //       ),
-                        //     ],
-                        //   ),
-                        //   child: GestureDetector(
-                        //     onTap: pickImage,
-                        //     child: Column(
-                        //       children: [
-                        //         image != null
-                        //             ? Image.file(image!,
-                        //                 width: double.infinity,
-                        //                 height: 160,
-                        //                 fit: BoxFit.cover)
-                        //             : const Image(
-                        //                 height: 160,
-                        //                 width: double.infinity,
-                        //                 fit: BoxFit.cover,
-                        //                 image: AssetImage(
-                        //                     'assets/images/defaultImage.png'))
-                        //       ],
-                        //     ),
-                        //   ),
-                        // ),
-                        // const SizedBox(
-                        //   height: 20,
-                        // ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: const [
+                            Text(
+                              'Choose image: ',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        Container(
+                          decoration: const BoxDecoration(
+                            color: Colors.white,
+                            boxShadow: [
+                              BoxShadow(
+                                color: Color.fromARGB(255, 45, 231, 255),
+                                blurRadius: 20.0,
+                                offset: Offset(0, 10),
+                              ),
+                            ],
+                          ),
+                          child: GestureDetector(
+                            onTap: pickImage,
+                            child: Column(
+                              children: [
+                                image != null
+                                    ? Image.file(image!,
+                                        width: double.infinity,
+                                        height: 160,
+                                        fit: BoxFit.cover)
+                                    : const Image(
+                                        height: 160,
+                                        width: double.infinity,
+                                        fit: BoxFit.cover,
+                                        image: AssetImage(
+                                            'assets/images/defaultImage.png'))
+                              ],
+                            ),
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 20,
+                        ),
                         GestureDetector(
-                          child: Container(
-                            padding: const EdgeInsets.all(15),
-                            decoration: BoxDecoration(
-                              boxShadow: const [
-                                BoxShadow(
-                                    color: Color.fromARGB(255, 45, 231, 255),
-                                    blurRadius: 20.0,
-                                    offset: Offset(0, 5)),
-                              ],
-                              border: Border.all(color: Colors.white, width: 2),
-                              color: const Color(0xFF29648C),
-                              borderRadius: BorderRadius.circular(50),
-                            ),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: const [
-                                Icon(
-                                  Icons.save_as_outlined,
-                                  size: 25,
-                                  color: Colors.white,
-                                ),
-                                SizedBox(
-                                  width: 10,
-                                ),
-                                Center(
-                                  child: Text(
-                                    'Save',
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 20),
-                                  ),
-                                ),
-                              ],
-                            ),
+                          child: const CustomButtonWidget(
+                            buttonText: 'Save',
                           ),
                           onTap: () {
                             if (takerIDController.text.isNotEmpty &&

@@ -70,29 +70,10 @@ class _TextFieldFormWidgetState extends State<TextFieldFormWidget> {
           controller: widget.purposeController,
           myhintText: 'Purpose',
         ),
-        Container(
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(5),
-            boxShadow: const [
-              BoxShadow(
-                color: Color.fromARGB(255, 45, 231, 255),
-                blurRadius: 20.0,
-                offset: Offset(0, 10),
-              ),
-            ],
-          ),
-          child: Column(
-            children: <Widget>[
-              CustomDatePicker(
-                dateController: widget.dateController,
-              )
-            ],
-          ),
+        CustomDatePicker(
+          dateController: widget.dateController,
         ),
-        const SizedBox(
-          height: 10,
-        ),
+        
         InputField(
           keyboardType: TextInputType.text,
           controller: widget.campusController,

@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:items_io/Widget/customButton.dart';
 
 import '../Widget/textFieldFormWidget.dart';
 
@@ -24,11 +25,11 @@ class _ItemsOutPageState extends State<ItemsOutPage> {
   final dateController = TextEditingController();
   final campusController = TextEditingController();
 
-  FirebaseAuth auth = FirebaseAuth.instance;
+  ///////////FirebaseAuth auth = FirebaseAuth.instance;
   // ignore: deprecated_member_use
-  final databaseReference = FirebaseDatabase.instance.reference();
+  ///////////final databaseReference = FirebaseDatabase.instance.reference();
   // Get current user email
-  final user = FirebaseAuth.instance.currentUser!;
+  ///////////final user = FirebaseAuth.instance.currentUser!;
   @override
   void dispose() {
     takerNameController.dispose();
@@ -61,7 +62,7 @@ class _ItemsOutPageState extends State<ItemsOutPage> {
         .doc(campus + DateTime.now().toString())
         .set(
       {
-        'CurrentUser': user.email!,
+        //'CurrentUser': user.email!,
         'Staff_Name': takerName,
         'ID': takerID,
         'Position': position,
@@ -89,22 +90,22 @@ class _ItemsOutPageState extends State<ItemsOutPage> {
       String campus,
       String time) {
     // String? key = databaseReference.child("ItemsOUT").child(campus) .child(takerID)        .push()        .key;
-    databaseReference.child("itemsout").push().set(
-      {
-        //'Nº': key,
-        'CurrentUser': user.email!,
-        'StaffName': takerName,
-        'ID': takerID,
-        'Position': position,
-        'Department': division,
-        'ItemsDesc': itemName,
-        'Quantity': quantity,
-        'Purpose': perpose,
-        'Date': date,
-        'TimeAdded': time,
-        'Campus': campus
-      },
-    );
+    // databaseReference.child("itemsout").push().set(
+    //   {
+    //     //'Nº': key,
+    //     'CurrentUser': user.email!,
+    //     'StaffName': takerName,
+    //     'ID': takerID,
+    //     'Position': position,
+    //     'Department': division,
+    //     'ItemsDesc': itemName,
+    //     'Quantity': quantity,
+    //     'Purpose': perpose,
+    //     'Date': date,
+    //     'TimeAdded': time,
+    //     'Campus': campus
+    //   },
+    // );
     takerNameController.clear();
     takerIDController.clear();
     positionController.clear();
@@ -162,41 +163,8 @@ class _ItemsOutPageState extends State<ItemsOutPage> {
                         campusController: campusController,
                       ),
                       GestureDetector(
-                        child: Container(
-                          padding: const EdgeInsets.all(15),
-                          decoration: BoxDecoration(
-                            boxShadow: const [
-                              BoxShadow(
-                                  color: Color.fromARGB(255, 45, 231, 255),
-                                  blurRadius: 20.0,
-                                  offset: Offset(0, 5)),
-                            ],
-                            border: Border.all(color: Colors.white, width: 2),
-                            color: const Color(0xFF29648C),
-                            borderRadius: BorderRadius.circular(50),
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: const [
-                              Icon(
-                                Icons.save_as_outlined,
-                                size: 25,
-                                color: Colors.white,
-                              ),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              Center(
-                                child: Text(
-                                  'Save',
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 20),
-                                ),
-                              ),
-                            ],
-                          ),
+                        child: const CustomButtonWidget(
+                          buttonText: 'Save',
                         ),
                         onTap: () {
                           if (takerIDController.text.isNotEmpty &&

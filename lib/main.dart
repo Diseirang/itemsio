@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:items_io/Widget/testPage.dart';
+import 'package:items_io/inoutpage/items_out_page.dart';
 import 'Pages/splash_screen.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  // WidgetsFlutterBinding.ensureInitialized();
+  // await Firebase.initializeApp();
   runApp(
     const MyApp(),
   );
@@ -19,7 +21,8 @@ class MyApp extends StatelessWidget {
     return const MaterialApp(
       //debugShowCheckedModeBanner: false,
       ////////////////////
-      home: SplashScreen(),
+      home: //SplashScreen(),
+          TestPage(),
     );
   }
 }
