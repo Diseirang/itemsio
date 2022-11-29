@@ -29,7 +29,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
   // final _ageControl = TextEditingController();
 
-  FirebaseAuth auth = FirebaseAuth.instance;
+  //FirebaseAuth auth = FirebaseAuth.instance;
   // ignore: deprecated_member_use
   final databaseReference = FirebaseDatabase.instance.reference();
 
