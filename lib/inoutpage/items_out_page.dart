@@ -3,7 +3,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:intl/intl.dart';
+import 'package:items_io/Widget/customButton.dart';
+
+import '../Widget/textFieldFormWidget.dart';
 
 class ItemsOutPage extends StatefulWidget {
   const ItemsOutPage({super.key});
@@ -19,15 +21,15 @@ class _ItemsOutPageState extends State<ItemsOutPage> {
   final departmentController = TextEditingController();
   final itemsNameController = TextEditingController();
   final quantityController = TextEditingController();
-  final perposeController = TextEditingController();
+  final purposeController = TextEditingController();
   final dateController = TextEditingController();
   final campusController = TextEditingController();
 
-  FirebaseAuth auth = FirebaseAuth.instance;
+  ///////////FirebaseAuth auth = FirebaseAuth.instance;
   // ignore: deprecated_member_use
-  final databaseReference = FirebaseDatabase.instance.reference();
+  ///////////final databaseReference = FirebaseDatabase.instance.reference();
   // Get current user email
-  final user = FirebaseAuth.instance.currentUser!;
+  ///////////final user = FirebaseAuth.instance.currentUser!;
   @override
   void dispose() {
     takerNameController.dispose();
@@ -36,7 +38,7 @@ class _ItemsOutPageState extends State<ItemsOutPage> {
     departmentController.dispose();
     itemsNameController.dispose();
     quantityController.dispose();
-    perposeController.dispose();
+    purposeController.dispose();
     dateController.dispose();
     campusController.dispose();
     super.dispose();
@@ -60,7 +62,7 @@ class _ItemsOutPageState extends State<ItemsOutPage> {
         .doc(campus + DateTime.now().toString())
         .set(
       {
-        'CurrentUser': user.email!,
+        //'CurrentUser': user.email!,
         'Staff_Name': takerName,
         'ID': takerID,
         'Position': position,
@@ -88,29 +90,29 @@ class _ItemsOutPageState extends State<ItemsOutPage> {
       String campus,
       String time) {
     // String? key = databaseReference.child("ItemsOUT").child(campus) .child(takerID)        .push()        .key;
-    databaseReference.child("itemsout").push().set(
-      {
-        //'Nº': key,
-        'CurrentUser': user.email!,
-        'StaffName': takerName,
-        'ID': takerID,
-        'Position': position,
-        'Department': division,
-        'ItemsDesc': itemName,
-        'Quantity': quantity,
-        'Purpose': perpose,
-        'Date': date,
-        'TimeAdded': time,
-        'Campus': campus
-      },
-    );
+    // databaseReference.child("itemsout").push().set(
+    //   {
+    //     //'Nº': key,
+    //     'CurrentUser': user.email!,
+    //     'StaffName': takerName,
+    //     'ID': takerID,
+    //     'Position': position,
+    //     'Department': division,
+    //     'ItemsDesc': itemName,
+    //     'Quantity': quantity,
+    //     'Purpose': perpose,
+    //     'Date': date,
+    //     'TimeAdded': time,
+    //     'Campus': campus
+    //   },
+    // );
     takerNameController.clear();
     takerIDController.clear();
     positionController.clear();
     departmentController.clear();
     itemsNameController.clear();
     quantityController.clear();
-    perposeController.clear();
+    purposeController.clear();
     dateController.clear();
     campusController.clear();
   }
@@ -149,425 +151,20 @@ class _ItemsOutPageState extends State<ItemsOutPage> {
                   padding: const EdgeInsets.all(25),
                   child: Column(
                     children: <Widget>[
-                      Container(
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(10),
-                          boxShadow: const [
-                            BoxShadow(
-                              color: Color.fromARGB(255, 45, 231, 255),
-                              blurRadius: 20.0,
-                              offset: Offset(0, 10),
-                            ),
-                          ],
-                        ),
-                        child: Column(
-                          children: <Widget>[
-                            Container(
-                              decoration: BoxDecoration(
-                                color: Colors.grey[100],
-                                border: Border.all(color: Colors.white),
-                                borderRadius: BorderRadius.circular(5),
-                              ),
-                              child: Padding(
-                                padding: const EdgeInsets.only(left: 20),
-                                child: TextField(
-                                  controller: takerNameController,
-                                  decoration: const InputDecoration(
-                                    border: InputBorder.none,
-                                    hintText: 'Staff Name',
-                                    hintStyle: TextStyle(
-                                      color: Color.fromARGB(255, 41, 100, 140),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      Container(
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(10),
-                          boxShadow: const [
-                            BoxShadow(
-                              color: Color.fromARGB(255, 45, 231, 255),
-                              blurRadius: 20.0,
-                              offset: Offset(0, 10),
-                            ),
-                          ],
-                        ),
-                        child: Column(
-                          children: <Widget>[
-                            Container(
-                              decoration: BoxDecoration(
-                                color: Colors.grey[100],
-                                border: Border.all(color: Colors.white),
-                                borderRadius: BorderRadius.circular(5),
-                              ),
-                              child: Padding(
-                                padding: const EdgeInsets.only(left: 20),
-                                child: TextField(
-                                  controller: takerIDController,
-                                  decoration: const InputDecoration(
-                                    border: InputBorder.none,
-                                    hintText: 'ID',
-                                    hintStyle: TextStyle(
-                                      color: Color.fromARGB(255, 41, 100, 140),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      Container(
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(10),
-                          boxShadow: const [
-                            BoxShadow(
-                              color: Color.fromARGB(255, 45, 231, 255),
-                              blurRadius: 20.0,
-                              offset: Offset(0, 10),
-                            ),
-                          ],
-                        ),
-                        child: Column(
-                          children: <Widget>[
-                            Container(
-                              decoration: BoxDecoration(
-                                color: Colors.grey[100],
-                                border: Border.all(color: Colors.white),
-                                borderRadius: BorderRadius.circular(5),
-                              ),
-                              child: Padding(
-                                padding: const EdgeInsets.only(left: 20),
-                                child: TextField(
-                                  controller: positionController,
-                                  decoration: const InputDecoration(
-                                    border: InputBorder.none,
-                                    hintText: 'Position',
-                                    hintStyle: TextStyle(
-                                      color: Color.fromARGB(255, 41, 100, 140),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      Container(
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(10),
-                          boxShadow: const [
-                            BoxShadow(
-                              color: Color.fromARGB(255, 45, 231, 255),
-                              blurRadius: 20.0,
-                              offset: Offset(0, 10),
-                            ),
-                          ],
-                        ),
-                        child: Column(
-                          children: <Widget>[
-                            Container(
-                              decoration: BoxDecoration(
-                                color: Colors.grey[100],
-                                border: Border.all(color: Colors.white),
-                                borderRadius: BorderRadius.circular(5),
-                              ),
-                              child: Padding(
-                                padding: const EdgeInsets.only(left: 20),
-                                child: TextField(
-                                  controller: departmentController,
-                                  decoration: const InputDecoration(
-                                    border: InputBorder.none,
-                                    hintText: 'Department',
-                                    hintStyle: TextStyle(
-                                      color: Color.fromARGB(255, 41, 100, 140),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      Container(
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(10),
-                          boxShadow: const [
-                            BoxShadow(
-                              color: Color.fromARGB(255, 45, 231, 255),
-                              blurRadius: 20.0,
-                              offset: Offset(0, 10),
-                            ),
-                          ],
-                        ),
-                        child: Column(
-                          children: <Widget>[
-                            Container(
-                              decoration: BoxDecoration(
-                                color: Colors.grey[100],
-                                border: Border.all(color: Colors.white),
-                                borderRadius: BorderRadius.circular(5),
-                              ),
-                              child: Padding(
-                                padding: const EdgeInsets.only(left: 20),
-                                child: TextField(
-                                  controller: itemsNameController,
-                                  decoration: const InputDecoration(
-                                    border: InputBorder.none,
-                                    hintText: 'Item Name',
-                                    hintStyle: TextStyle(
-                                      color: Color.fromARGB(255, 41, 100, 140),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      Container(
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(10),
-                          boxShadow: const [
-                            BoxShadow(
-                              color: Color.fromARGB(255, 45, 231, 255),
-                              blurRadius: 20.0,
-                              offset: Offset(0, 10),
-                            ),
-                          ],
-                        ),
-                        child: Column(
-                          children: <Widget>[
-                            Container(
-                              decoration: BoxDecoration(
-                                color: Colors.grey[100],
-                                border: Border.all(color: Colors.white),
-                                borderRadius: BorderRadius.circular(5),
-                              ),
-                              child: Padding(
-                                padding: const EdgeInsets.only(left: 20),
-                                child: TextField(
-                                  controller: quantityController,
-                                  decoration: const InputDecoration(
-                                    border: InputBorder.none,
-                                    hintText: 'Quantity',
-                                    hintStyle: TextStyle(
-                                      color: Color.fromARGB(255, 41, 100, 140),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      Container(
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(10),
-                          boxShadow: const [
-                            BoxShadow(
-                              color: Color.fromARGB(255, 45, 231, 255),
-                              blurRadius: 20.0,
-                              offset: Offset(0, 10),
-                            ),
-                          ],
-                        ),
-                        child: Column(
-                          children: <Widget>[
-                            Container(
-                              decoration: BoxDecoration(
-                                color: Colors.grey[100],
-                                border: Border.all(color: Colors.white),
-                                borderRadius: BorderRadius.circular(5),
-                              ),
-                              child: Padding(
-                                padding: const EdgeInsets.only(left: 20),
-                                child: TextField(
-                                  controller: perposeController,
-                                  decoration: const InputDecoration(
-                                    border: InputBorder.none,
-                                    hintText: 'Purpose',
-                                    hintStyle: TextStyle(
-                                      color: Color.fromARGB(255, 41, 100, 140),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      Container(
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(10),
-                          boxShadow: const [
-                            BoxShadow(
-                              color: Color.fromARGB(255, 45, 231, 255),
-                              blurRadius: 20.0,
-                              offset: Offset(0, 10),
-                            ),
-                          ],
-                        ),
-                        child: Column(
-                          children: <Widget>[
-                            Container(
-                              decoration: BoxDecoration(
-                                color: Colors.grey[100],
-                                border: Border.all(color: Colors.white),
-                                borderRadius: BorderRadius.circular(5),
-                              ),
-                              child: Padding(
-                                padding: const EdgeInsets.only(left: 20),
-                                child: TextField(
-                                  controller: dateController,
-                                  decoration: const InputDecoration(
-                                    border: InputBorder.none,
-                                    hintText: 'Date',
-                                    hintStyle: TextStyle(
-                                      color: Color.fromARGB(255, 41, 100, 140),
-                                    ),
-                                    suffixIcon: Icon(
-                                      Icons.calendar_month,
-                                      color: Color.fromARGB(255, 41, 100, 140),
-                                    ),
-                                  ),
-                                  onTap: () async {
-                                    DateTime? pickedDate = await showDatePicker(
-                                        context: context,
-                                        initialDate: DateTime.now(),
-                                        firstDate: DateTime(
-                                            2000), //DateTime.now() - not to allow to choose before today.
-                                        lastDate: DateTime(2101));
-                                    if (pickedDate != null) {
-                                      String formattedDate =
-                                          DateFormat('MM-dd-yyyy')
-                                              .format(pickedDate);
-                                      //print(formattedDate);
-                                      setState(
-                                        () {
-                                          dateController.text = formattedDate;
-                                        },
-                                      );
-                                    } else {}
-                                  },
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      Container(
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(10),
-                          boxShadow: const [
-                            BoxShadow(
-                              color: Color.fromARGB(255, 45, 231, 255),
-                              blurRadius: 20.0,
-                              offset: Offset(0, 10),
-                            ),
-                          ],
-                        ),
-                        child: Column(
-                          children: <Widget>[
-                            Container(
-                              decoration: BoxDecoration(
-                                color: Colors.grey[100],
-                                border: Border.all(color: Colors.white),
-                                borderRadius: BorderRadius.circular(5),
-                              ),
-                              child: Padding(
-                                padding: const EdgeInsets.only(left: 20),
-                                child: TextField(
-                                  controller: campusController,
-                                  decoration: const InputDecoration(
-                                    border: InputBorder.none,
-                                    hintText: 'Campus',
-                                    hintStyle: TextStyle(
-                                      color: Color.fromARGB(255, 41, 100, 140),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 20,
+                      TextFieldFormWidget(
+                        takerNameController: takerNameController,
+                        takerIDController: takerIDController,
+                        positionController: positionController,
+                        departmentController: departmentController,
+                        itemsNameController: itemsNameController,
+                        quantityController: quantityController,
+                        purposeController: purposeController,
+                        dateController: dateController,
+                        campusController: campusController,
                       ),
                       GestureDetector(
-                        child: Container(
-                          padding: const EdgeInsets.all(15),
-                          decoration: BoxDecoration(
-                            boxShadow: const [
-                              BoxShadow(
-                                  color: Color.fromARGB(255, 45, 231, 255),
-                                  blurRadius: 20.0,
-                                  offset: Offset(0, 5)),
-                            ],
-                            border: Border.all(color: Colors.white, width: 2),
-                            color: const Color(0xFF29648C),
-                            borderRadius: BorderRadius.circular(50),
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: const [
-                              Icon(
-                                Icons.save_as_outlined,
-                                size: 25,
-                                color: Colors.white,
-                              ),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              Center(
-                                child: Text(
-                                  'Save',
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 20),
-                                ),
-                              ),
-                            ],
-                          ),
+                        child: const CustomButtonWidget(
+                          buttonText: 'Save',
                         ),
                         onTap: () {
                           if (takerIDController.text.isNotEmpty &&
@@ -576,7 +173,7 @@ class _ItemsOutPageState extends State<ItemsOutPage> {
                               departmentController.text.isNotEmpty &&
                               itemsNameController.text.isNotEmpty &&
                               quantityController.text.isNotEmpty &&
-                              perposeController.text.isNotEmpty &&
+                              purposeController.text.isNotEmpty &&
                               dateController.text.isNotEmpty &&
                               campusController.text.isNotEmpty) {
                             try {
@@ -588,7 +185,7 @@ class _ItemsOutPageState extends State<ItemsOutPage> {
                                   departmentController.text.trim(),
                                   itemsNameController.text.trim(),
                                   int.parse(quantityController.text.trim()),
-                                  perposeController.text.trim(),
+                                  purposeController.text.trim(),
                                   dateController.text.trim(),
                                   campusController.text.trim(),
                                   DateTime.now().toString());
@@ -601,7 +198,7 @@ class _ItemsOutPageState extends State<ItemsOutPage> {
                                   departmentController.text.trim(),
                                   itemsNameController.text.trim(),
                                   int.parse(quantityController.text.trim()),
-                                  perposeController.text.trim(),
+                                  purposeController.text.trim(),
                                   dateController.text.trim(),
                                   campusController.text.trim(),
                                   DateTime.now().toString());

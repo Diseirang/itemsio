@@ -8,9 +8,11 @@ import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:intl/intl.dart';
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
+import 'package:items_io/Widget/customButton.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
+
+import '../Widget/textFieldFormWidget.dart';
 
 class ItemsInPage extends StatefulWidget {
   const ItemsInPage({super.key});
@@ -26,7 +28,7 @@ class _ItemsInPageState extends State<ItemsInPage> {
   final departmentController = TextEditingController();
   final itemsNameController = TextEditingController();
   final quantityController = TextEditingController();
-  final perposeController = TextEditingController();
+  final purposeController = TextEditingController();
   final dateController = TextEditingController();
   final campusController = TextEditingController();
 
@@ -44,7 +46,7 @@ class _ItemsInPageState extends State<ItemsInPage> {
     departmentController.dispose();
     itemsNameController.dispose();
     quantityController.dispose();
-    perposeController.dispose();
+    purposeController.dispose();
     dateController.dispose();
     campusController.dispose();
     super.dispose();
@@ -119,7 +121,7 @@ class _ItemsInPageState extends State<ItemsInPage> {
     departmentController.clear();
     itemsNameController.clear();
     quantityController.clear();
-    perposeController.clear();
+    purposeController.clear();
     dateController.clear();
     campusController.clear();
   }
@@ -283,86 +285,35 @@ class _ItemsInPageState extends State<ItemsInPage> {
                     padding: const EdgeInsets.all(25),
                     child: Column(
                       children: <Widget>[
-                        // InkWell(
-                        //   onTap: () {
-                        //     dialog(context);
-                        //   },
-                        //   child: SizedBox(
-                        //     height: MediaQuery.of(context).size.height * .2,
-                        //     width: double.infinity,
-                        //     child: image != null
-                        //         ? ClipRect(
-                        //             child: Image.file(
-                        //               image!.absolute,
-                        //               width: 100,
-                        //               height: 100,
-                        //               fit: BoxFit.fitHeight,
-                        //             ),
-                        //           )
-                        //         : Container(
-                        //             decoration: BoxDecoration(
-                        //               color: Colors.grey.shade200,
-                        //               borderRadius: BorderRadius.circular(10),
-                        //             ),
-                        //             width: 100,
-                        //             height: 100,
-                        //             child: const Icon(
-                        //               Icons.camera_alt,
-                        //               color: Color.fromARGB(255, 41, 100, 140),
-                        //             ),
-                        //           ),
-                        //   ),
-                        // ),
-                        // const SizedBox(
-                        //   height: 10,
-                        // ),
-                        Container(
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(5),
-                            boxShadow: const [
-                              BoxShadow(
-                                color: Color.fromARGB(255, 45, 231, 255),
-                                blurRadius: 20.0,
-                                offset: Offset(0, 10),
-                              ),
-                            ],
-                          ),
-                          child: Column(
-                            children: <Widget>[
-                              Container(
-                                decoration: BoxDecoration(
-                                  color: Colors.grey[100],
-                                  border: Border.all(color: Colors.white),
-                                  borderRadius: BorderRadius.circular(12),
-                                ),
-                                child: Padding(
-                                  padding: const EdgeInsets.only(left: 20),
-                                  child: TextField(
-                                    keyboardType: TextInputType.text,
-                                    controller: takerNameController,
-                                    decoration: const InputDecoration(
-                                      border: InputBorder.none,
-                                      hintText: 'Staff Name',
-                                      hintStyle: TextStyle(
-                                        color:
-                                            Color.fromARGB(255, 41, 100, 140),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
+                        TextFieldFormWidget(
+                          takerNameController: takerNameController,
+                          takerIDController: takerIDController,
+                          positionController: positionController,
+                          departmentController: departmentController,
+                          itemsNameController: itemsNameController,
+                          quantityController: quantityController,
+                          purposeController: purposeController,
+                          dateController: dateController,
+                          campusController: campusController,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: const [
+                            Text(
+                              'Choose image: ',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white),
+                            ),
+                          ],
                         ),
                         const SizedBox(
                           height: 10,
                         ),
                         Container(
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                             color: Colors.white,
-                            borderRadius: BorderRadius.circular(5),
-                            boxShadow: const [
+                            boxShadow: [
                               BoxShadow(
                                 color: Color.fromARGB(255, 45, 231, 255),
                                 blurRadius: 20.0,
@@ -370,458 +321,31 @@ class _ItemsInPageState extends State<ItemsInPage> {
                               ),
                             ],
                           ),
-                          child: Column(
-                            children: <Widget>[
-                              Container(
-                                decoration: BoxDecoration(
-                                  color: Colors.grey[100],
-                                  border: Border.all(color: Colors.white),
-                                  borderRadius: BorderRadius.circular(12),
-                                ),
-                                child: Padding(
-                                  padding: const EdgeInsets.only(left: 20),
-                                  child: TextField(
-                                    keyboardType: TextInputType.phone,
-                                    controller: takerIDController,
-                                    decoration: const InputDecoration(
-                                      border: InputBorder.none,
-                                      hintText: 'ID',
-                                      hintStyle: TextStyle(
-                                        color:
-                                            Color.fromARGB(255, 41, 100, 140),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        Container(
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(5),
-                            boxShadow: const [
-                              BoxShadow(
-                                color: Color.fromARGB(255, 45, 231, 255),
-                                blurRadius: 20.0,
-                                offset: Offset(0, 10),
-                              ),
-                            ],
-                          ),
-                          child: Column(
-                            children: <Widget>[
-                              Container(
-                                decoration: BoxDecoration(
-                                  color: Colors.grey[100],
-                                  border: Border.all(color: Colors.white),
-                                  borderRadius: BorderRadius.circular(12),
-                                ),
-                                child: Padding(
-                                  padding: const EdgeInsets.only(left: 20),
-                                  child: TextField(
-                                    keyboardType: TextInputType.text,
-                                    controller: positionController,
-                                    decoration: const InputDecoration(
-                                      border: InputBorder.none,
-                                      hintText: 'Position',
-                                      hintStyle: TextStyle(
-                                        color:
-                                            Color.fromARGB(255, 41, 100, 140),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        Container(
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(5),
-                            boxShadow: const [
-                              BoxShadow(
-                                color: Color.fromARGB(255, 45, 231, 255),
-                                blurRadius: 20.0,
-                                offset: Offset(0, 10),
-                              ),
-                            ],
-                          ),
-                          child: Column(
-                            children: <Widget>[
-                              Container(
-                                decoration: BoxDecoration(
-                                  color: Colors.grey[100],
-                                  border: Border.all(color: Colors.white),
-                                  borderRadius: BorderRadius.circular(12),
-                                ),
-                                child: Padding(
-                                  padding: const EdgeInsets.only(left: 20),
-                                  child: TextField(
-                                    keyboardType: TextInputType.text,
-                                    controller: departmentController,
-                                    decoration: const InputDecoration(
-                                      border: InputBorder.none,
-                                      hintText: 'Department',
-                                      hintStyle: TextStyle(
-                                        color:
-                                            Color.fromARGB(255, 41, 100, 140),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        Container(
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(5),
-                            boxShadow: const [
-                              BoxShadow(
-                                color: Color.fromARGB(255, 45, 231, 255),
-                                blurRadius: 20.0,
-                                offset: Offset(0, 10),
-                              ),
-                            ],
-                          ),
-                          child: Column(
-                            children: <Widget>[
-                              Container(
-                                decoration: BoxDecoration(
-                                  color: Colors.grey[100],
-                                  border: Border.all(color: Colors.white),
-                                  borderRadius: BorderRadius.circular(12),
-                                ),
-                                child: Padding(
-                                  padding: const EdgeInsets.only(left: 20),
-                                  child: TextField(
-                                    keyboardType: TextInputType.text,
-                                    controller: itemsNameController,
-                                    decoration: const InputDecoration(
-                                      border: InputBorder.none,
-                                      hintText: 'Item Name',
-                                      hintStyle: TextStyle(
-                                        color:
-                                            Color.fromARGB(255, 41, 100, 140),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        Container(
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(5),
-                            boxShadow: const [
-                              BoxShadow(
-                                color: Color.fromARGB(255, 45, 231, 255),
-                                blurRadius: 20.0,
-                                offset: Offset(0, 10),
-                              ),
-                            ],
-                          ),
-                          child: Column(
-                            children: <Widget>[
-                              Container(
-                                decoration: BoxDecoration(
-                                  color: Colors.grey[100],
-                                  border: Border.all(color: Colors.white),
-                                  borderRadius: BorderRadius.circular(12),
-                                ),
-                                child: Padding(
-                                  padding: const EdgeInsets.only(left: 20),
-                                  child: TextField(
-                                    keyboardType: TextInputType.number,
-                                    controller: quantityController,
-                                    decoration: const InputDecoration(
-                                      border: InputBorder.none,
-                                      hintText: 'Quantity',
-                                      hintStyle: TextStyle(
-                                        color:
-                                            Color.fromARGB(255, 41, 100, 140),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        Container(
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(5),
-                            boxShadow: const [
-                              BoxShadow(
-                                color: Color.fromARGB(255, 45, 231, 255),
-                                blurRadius: 20.0,
-                                offset: Offset(0, 10),
-                              ),
-                            ],
-                          ),
-                          child: Column(
-                            children: <Widget>[
-                              Container(
-                                decoration: BoxDecoration(
-                                  color: Colors.grey[100],
-                                  border: Border.all(color: Colors.white),
-                                  borderRadius: BorderRadius.circular(12),
-                                ),
-                                child: Padding(
-                                  padding: const EdgeInsets.only(left: 20),
-                                  child: TextField(
-                                    keyboardType: TextInputType.text,
-                                    controller: perposeController,
-                                    decoration: const InputDecoration(
-                                      border: InputBorder.none,
-                                      hintText: 'Purpose',
-                                      hintStyle: TextStyle(
-                                        color:
-                                            Color.fromARGB(255, 41, 100, 140),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        Container(
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(5),
-                            boxShadow: const [
-                              BoxShadow(
-                                color: Color.fromARGB(255, 45, 231, 255),
-                                blurRadius: 20.0,
-                                offset: Offset(0, 10),
-                              ),
-                            ],
-                          ),
-                          child: Column(
-                            children: <Widget>[
-                              Container(
-                                decoration: BoxDecoration(
-                                  color: Colors.grey[100],
-                                  border: Border.all(color: Colors.white),
-                                  borderRadius: BorderRadius.circular(12),
-                                ),
-                                child: Padding(
-                                  padding: const EdgeInsets.only(left: 20),
-                                  child: TextField(
-                                    keyboardType: TextInputType.none,
-                                    controller: dateController,
-                                    decoration: const InputDecoration(
-                                      border: InputBorder.none,
-                                      hintText: 'Date',
-                                      hintStyle: TextStyle(
-                                        color:
-                                            Color.fromARGB(255, 41, 100, 140),
-                                      ),
-                                      suffixIcon: Icon(
-                                        Icons.calendar_month,
-                                        color:
-                                            Color.fromARGB(255, 41, 100, 140),
-                                      ),
-                                    ),
-                                    onTap: () async {
-                                      DateTime? pickedDate =
-                                          await showDatePicker(
-                                              context: context,
-                                              initialDate: DateTime.now(),
-                                              firstDate: DateTime(
-                                                  2000), //DateTime.now() - not to allow to choose before today.
-                                              lastDate: DateTime(2101));
-                                      if (pickedDate != null) {
-                                        String formattedDate =
-                                            DateFormat('MM-dd-yyyy')
-                                                .format(pickedDate);
-                                        //print(formattedDate);
-                                        setState(
-                                          () {
-                                            dateController.text = formattedDate;
-                                          },
-                                        );
-                                      } else {
-                                        // ignore: use_build_context_synchronously
-                                        showDialog(
-                                          context: context,
-                                          builder: (context) {
-                                            return const AlertDialog(
-                                              backgroundColor: Color.fromARGB(
-                                                  255, 41, 100, 140),
-                                              title: Text(
-                                                'Invalided Date!',
-                                                style: TextStyle(
-                                                    color: Colors.white),
-                                              ),
-                                              content: Text(
-                                                'Date is not selected',
-                                                style: TextStyle(
-                                                    color: Colors.white),
-                                              ),
-                                            );
-                                          },
-                                        );
-                                      }
-                                    },
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        Container(
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(5),
-                            boxShadow: const [
-                              BoxShadow(
-                                color: Color.fromARGB(255, 45, 231, 255),
-                                blurRadius: 20.0,
-                                offset: Offset(0, 10),
-                              ),
-                            ],
-                          ),
-                          child: Column(
-                            children: <Widget>[
-                              Container(
-                                decoration: BoxDecoration(
-                                  color: Colors.grey[100],
-                                  border: Border.all(color: Colors.white),
-                                  borderRadius: BorderRadius.circular(12),
-                                ),
-                                child: Padding(
-                                  padding: const EdgeInsets.only(left: 20),
-                                  child: TextField(
-                                    controller: campusController,
-                                    decoration: const InputDecoration(
-                                      border: InputBorder.none,
-                                      hintText: 'Campus',
-                                      hintStyle: TextStyle(
-                                        color:
-                                            Color.fromARGB(255, 41, 100, 140),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
+                          child: GestureDetector(
+                            onTap: pickImage,
+                            child: Column(
+                              children: [
+                                image != null
+                                    ? Image.file(image!,
+                                        width: double.infinity,
+                                        height: 160,
+                                        fit: BoxFit.cover)
+                                    : const Image(
+                                        height: 160,
+                                        width: double.infinity,
+                                        fit: BoxFit.cover,
+                                        image: AssetImage(
+                                            'assets/images/defaultImage.png'))
+                              ],
+                            ),
                           ),
                         ),
                         const SizedBox(
                           height: 20,
                         ),
-                        // Row(
-                        //   mainAxisAlignment: MainAxisAlignment.start,
-                        //   children: const [
-                        //     Text(
-                        //       'Choose image: ',
-                        //       style: TextStyle(
-                        //           fontWeight: FontWeight.bold,
-                        //           color: Colors.white),
-                        //     ),
-                        //   ],
-                        // ),
-                        // const SizedBox(
-                        //   height: 10,
-                        // ),
-                        // Container(
-                        //   decoration: const BoxDecoration(
-                        //     color: Colors.white,
-                        //     boxShadow: [
-                        //       BoxShadow(
-                        //         color: Color.fromARGB(255, 45, 231, 255),
-                        //         blurRadius: 20.0,
-                        //         offset: Offset(0, 10),
-                        //       ),
-                        //     ],
-                        //   ),
-                        //   child: GestureDetector(
-                        //     onTap: pickImage,
-                        //     child: Column(
-                        //       children: [
-                        //         image != null
-                        //             ? Image.file(image!,
-                        //                 width: double.infinity,
-                        //                 height: 160,
-                        //                 fit: BoxFit.cover)
-                        //             : const Image(
-                        //                 height: 160,
-                        //                 width: double.infinity,
-                        //                 fit: BoxFit.cover,
-                        //                 image: AssetImage(
-                        //                     'assets/images/defaultImage.png'))
-                        //       ],
-                        //     ),
-                        //   ),
-                        // ),
-                        // const SizedBox(
-                        //   height: 20,
-                        // ),
                         GestureDetector(
-                          child: Container(
-                            padding: const EdgeInsets.all(15),
-                            decoration: BoxDecoration(
-                              boxShadow: const [
-                                BoxShadow(
-                                    color: Color.fromARGB(255, 45, 231, 255),
-                                    blurRadius: 20.0,
-                                    offset: Offset(0, 5)),
-                              ],
-                              border: Border.all(color: Colors.white, width: 2),
-                              color: const Color(0xFF29648C),
-                              borderRadius: BorderRadius.circular(50),
-                            ),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: const [
-                                Icon(
-                                  Icons.save_as_outlined,
-                                  size: 25,
-                                  color: Colors.white,
-                                ),
-                                SizedBox(
-                                  width: 10,
-                                ),
-                                Center(
-                                  child: Text(
-                                    'Save',
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 20),
-                                  ),
-                                ),
-                              ],
-                            ),
+                          child: const CustomButtonWidget(
+                            buttonText: 'Save',
                           ),
                           onTap: () {
                             if (takerIDController.text.isNotEmpty &&
@@ -830,7 +354,7 @@ class _ItemsInPageState extends State<ItemsInPage> {
                                 departmentController.text.isNotEmpty &&
                                 itemsNameController.text.isNotEmpty &&
                                 quantityController.text.isNotEmpty &&
-                                perposeController.text.isNotEmpty &&
+                                purposeController.text.isNotEmpty &&
                                 dateController.text.isNotEmpty &&
                                 campusController.text.isNotEmpty) {
                               try {
@@ -842,7 +366,7 @@ class _ItemsInPageState extends State<ItemsInPage> {
                                     departmentController.text.trim(),
                                     itemsNameController.text.trim(),
                                     int.parse(quantityController.text.trim()),
-                                    perposeController.text.trim(),
+                                    purposeController.text.trim(),
                                     dateController.text.trim(),
                                     campusController.text.trim(),
                                     DateTime.now().toString());
@@ -855,7 +379,7 @@ class _ItemsInPageState extends State<ItemsInPage> {
                                     departmentController.text.trim(),
                                     itemsNameController.text.trim(),
                                     int.parse(quantityController.text.trim()),
-                                    perposeController.text.trim(),
+                                    purposeController.text.trim(),
                                     dateController.text.trim(),
                                     campusController.text.trim(),
                                     DateTime.now().toString());
